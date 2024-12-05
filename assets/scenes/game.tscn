@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvi3u4ffos2fs"]
+
+[ext_resource type="PackedScene" uid="uid://n8cohatmpk2b" path="res://assets/scenes/troops/troop.tscn" id="1_pb5o7"]
+
+[node name="game" type="Node2D"]
+
+[node name="troop" parent="." instance=ExtResource("1_pb5o7")]
+position = Vector2(552, 328)
+hp = 100
+speed = 100
+damage = 100
+
+[node name="troop2" parent="." instance=ExtResource("1_pb5o7")]
+position = Vector2(392, 422)
+
+[node name="troop3" parent="." instance=ExtResource("1_pb5o7")]
+position = Vector2(767, 149)
+
+[node name="troop4" parent="." instance=ExtResource("1_pb5o7")]
+position = Vector2(536, 280)

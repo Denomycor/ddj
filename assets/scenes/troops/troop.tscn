@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://n8cohatmpk2b"]
+
+[ext_resource type="Script" path="res://assets/scripts/troop.gd" id="1_2icef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sedtw"]
+size = Vector2(16, 16)
+
+[node name="troop" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_2icef")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sedtw")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
