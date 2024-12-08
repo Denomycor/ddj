@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://n8cohatmpk2b"]
+[gd_scene load_steps=6 format=3 uid="uid://n8cohatmpk2b"]
 
 [ext_resource type="Script" path="res://assets/scripts/troop.gd" id="1_2icef"]
+[ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="2_pow76"]
+[ext_resource type="Script" path="res://assets/scripts/components/attack_component.gd" id="3_dxdlw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sedtw"]
 size = Vector2(16, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kbujc"]
+radius = 72.4431
+
 [node name="troop" type="CharacterBody2D"]
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_2icef")
 
@@ -14,3 +20,15 @@ shape = SubResource("RectangleShape2D_sedtw")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[node name="CommandComponent" type="Node" parent="."]
+script = ExtResource("2_pow76")
+
+[node name="AttackComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("3_dxdlw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
+shape = SubResource("CircleShape2D_kbujc")
