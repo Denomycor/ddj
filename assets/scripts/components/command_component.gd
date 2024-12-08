@@ -1,5 +1,10 @@
 class_name CommandComponent extends Node
 
+## The movement speed of this troop
+@export var speed = 100;
+## The distance within the target position in order to consider the target as reached
+@export var aprox_distance = 100;
+
 @onready var parent: Node = get_parent()
 
 var command_state_machine := StateMachine.new(self)

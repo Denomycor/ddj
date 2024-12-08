@@ -1,11 +1,15 @@
-class_name AttackComponent extends Area2D
+## Keeps track of what enemies are in range of this troop
+class_name PerceptionComponent extends Area2D
 
+## The vision range to register enemy troops
+@export var perception_range: float
 
 var enemies_in_range: Array[PhysicsBody2D]
 var enabled = true
 
 
 func _ready() -> void:
+	$CollisionShape2D.shape.radius = perception_range
 	body_entered.connect(enemies_in_range.append)
 	body_exited.connect(enemies_in_range.erase)
 
