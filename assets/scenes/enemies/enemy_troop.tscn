@@ -1,11 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://csdohlnm1sk6r"]
+[gd_scene load_steps=5 format=3 uid="uid://csdohlnm1sk6r"]
+
+[ext_resource type="Script" path="res://assets/scripts/enemy_troop.gd" id="1_ec2r6"]
+[ext_resource type="Script" path="res://assets/scripts/components/hitbox_component.gd" id="1_g0cwo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gevu"]
 size = Vector2(8, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibi3m"]
+size = Vector2(16, 16)
+
 [node name="enemy_troop" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("1_ec2r6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4gevu")
@@ -13,3 +20,12 @@ shape = SubResource("RectangleShape2D_4gevu")
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.780825, 0.114943, 3.85046e-07, 1)
 polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_g0cwo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_ibi3m")

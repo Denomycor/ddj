@@ -1,15 +1,15 @@
 ## Defines the hitbox area to the troop and provides logic to handle hp and damage
 class_name HitboxComponent extends Area2D
 
-signal hit(value: int)
+signal hit(value: float)
 signal died
 
-@export var max_hp := 100
+@export var max_hp := 100.0
 
-var current_hp = max_hp
+var current_hp := max_hp
 
 
-func deal_damage(value: int) -> void:
+func deal_damage(value: float) -> void:
 	if(current_hp > value):
 		current_hp -= value
 		hit.emit(value)
