@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 	distance_acc += motion.length()
 
 	if(distance_acc > max_range):
-		queue_free()
+		destroy()
 	else:
 		velocity = motion
 		var collision := move_and_collide(motion)
@@ -30,5 +30,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func handle_collision(_collision: KinematicCollision2D) -> void:
+	destroy()
+
+
+func destroy() -> void:
 	queue_free()
 
