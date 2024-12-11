@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c32fsgk1it65m"]
+
+[ext_resource type="Script" path="res://assets/scripts/projectile.gd" id="1_ebxyq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i41t"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g1ag"]
+size = Vector2(8, 8)
+
+[node name="projectile" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ebxyq")
+speed = 20
+max_range = 500
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2i41t")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.12549, 1, 1)
+polygon = PackedVector2Array(-4, -4, -4, 4, 4, 4, 4, -4)
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("RectangleShape2D_0g1ag")

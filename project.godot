@@ -15,6 +15,11 @@ run/main_scene="res://assets/scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+player_troops=""
+enemy_troops=""
+
 [layer_names]
 
 2d_physics/layer_1="player_troop"
