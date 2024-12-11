@@ -8,6 +8,14 @@ var distance_acc := 0.0
 var locked := true
 
 
+func _ready() -> void:
+	$Area2D.area_entered.connect(func(area: Area2D):
+		if(area is HitboxComponent):
+			area.deal_damage(10)
+			destroy()
+	)
+
+
 func set_properties_and_start(from: Vector2, rot: float) -> void:
 	global_position = from
 	rotation = rot

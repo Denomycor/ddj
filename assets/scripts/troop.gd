@@ -21,7 +21,10 @@ func _process(_delta: float) -> void:
 		(target.get_node("HitboxComponent") as HitboxComponent).deal_damage(1)
 
 
+# Testing purposes
 func _input(event):
 	if(event is InputEventMouseButton):
-		projectile_spawner_component.shoot(get_tree().get_first_node_in_group("enemy_troops").global_position)
+		var enemy := get_tree().get_first_node_in_group("enemy_troops")
+		if(enemy):
+			projectile_spawner_component.shoot(enemy.global_position)
 
