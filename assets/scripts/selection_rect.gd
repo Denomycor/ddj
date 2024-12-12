@@ -14,6 +14,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			start_rect()
 		if(!e.pressed && e.button_index == MOUSE_BUTTON_RIGHT):
 			end_rect()
+		if(e.pressed && e.button_index == MOUSE_BUTTON_LEFT):
+			forward_command()
 
 	if(event is InputEventMouseMotion && is_selecting):
 		update_rect()
@@ -46,3 +48,8 @@ func update_rect() -> void:
 		return rect.has_point(e.global_position)
 	)
 	
+
+func forward_command() -> void:
+	for e in selected_troops:
+		e.get_node("CommandComponent").command_state_machine.external_transition("move_to", get_parent().get_global_mouse_position())
+
