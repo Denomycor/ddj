@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvi3u4ffos2fs"]
+[gd_scene load_steps=4 format=3 uid="uid://cvi3u4ffos2fs"]
 
 [ext_resource type="PackedScene" uid="uid://n8cohatmpk2b" path="res://assets/scenes/troops/troop.tscn" id="1_pb5o7"]
 [ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="2_lc1ea"]
+[ext_resource type="Script" path="res://assets/scripts/selection_rect.gd" id="3_i2e0i"]
 
 [node name="game" type="Node2D"]
 
@@ -19,3 +20,12 @@ position = Vector2(536, 280)
 
 [node name="enemy_troop" parent="." instance=ExtResource("2_lc1ea")]
 position = Vector2(263, 171)
+
+[node name="selection_rect" type="CanvasLayer" parent="."]
+script = ExtResource("3_i2e0i")
+
+[node name="Panel" type="Panel" parent="selection_rect"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
