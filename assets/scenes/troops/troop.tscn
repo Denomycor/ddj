@@ -13,7 +13,7 @@ size = Vector2(8, 8)
 size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbujc"]
-radius = 32.0
+radius = 80.0
 
 [node name="troop" type="CharacterBody2D" groups=["player_troops"]]
 collision_mask = 3

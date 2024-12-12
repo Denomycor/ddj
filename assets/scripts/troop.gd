@@ -18,13 +18,5 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var target := perception_component.get_closest_target()
 	if(target):
-		(target.get_node("HitboxComponent") as HitboxComponent).deal_damage(1)
-
-
-# Testing purposes
-func _input(event):
-	if(event is InputEventMouseButton):
-		var enemy := get_tree().get_first_node_in_group("enemy_troops")
-		if(enemy):
-			projectile_spawner_component.shoot(enemy.global_position)
+		projectile_spawner_component.shoot(target.global_position)
 
