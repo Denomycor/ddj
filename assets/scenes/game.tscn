@@ -46,9 +46,30 @@ alignment = 1
 [node name="move_to" type="Button" parent="UI/HBoxContainer"]
 visible = false
 layout_mode = 2
-text = "Move to"
+text = "Move to (1)"
 
 [node name="no_command" type="Button" parent="UI/HBoxContainer"]
 visible = false
 layout_mode = 2
-text = "Idle"
+text = "Idle (2)"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 664.0
+offset_top = 416.0
+offset_right = 1131.0
+offset_bottom = 621.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Não troco o skate por nenhuma hoe, backside 50 e Five-0
+Meu irmão viu-me a sacar switch backside flip e gritou: wow
+Isso foi dope, ganda toque, palminhas, meu bro do norte
+Como eu é out of stock, tenho talento, nunca foi sorte
+Jovem Dex pa' ti um props, no Brasil 'tava no resort
+Parti-a e dei-lhe o corte, anda lá, sai do meu quarto
+Eu não dou pa' esse peditório, 'tá pela fama, eu não suporto
+Sou fodido, isso eu concordo, compreensivo isso eu discordo"
