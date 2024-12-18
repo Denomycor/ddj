@@ -7,10 +7,12 @@ var waiting_on_pos := false
 func _ready() -> void:
 	pressed.connect(func():
 		waiting_on_pos = true
+		modulate = Color.GOLD
 	)
 	for e in get_parent().get_children().filter(func(e): return e != self):
 		e.pressed.connect(func():
 			waiting_on_pos = false
+			modulate = Color.WHITE
 		)
 	
 
@@ -28,4 +30,5 @@ func forward_command() -> void:
 func toggle_enabled(state: bool) -> void:
 	super.toggle_enabled(state)
 	waiting_on_pos = false
+	modulate = Color.WHITE
 
