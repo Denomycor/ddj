@@ -14,8 +14,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			start_rect()
 		if(!e.pressed && e.button_index == MOUSE_BUTTON_RIGHT):
 			end_rect()
-		if(e.pressed && e.button_index == MOUSE_BUTTON_LEFT):
-			forward_command()
 
 	if(event is InputEventMouseMotion && is_selecting):
 		update_rect()
@@ -75,10 +73,9 @@ func handle_selection() -> void:
 
 func update_command_ui(commands: Array[String]) -> void:
 	var labels := get_node("../UI/HBoxContainer").get_children()
-	for l in labels:
+	for l: CommandButton in labels:
 		if(commands.has(l.name)):
-			l.visible = true
+			l.toggle_enabled(true)
 		else:
-			l.visible = false
-
+			l.toggle_enabled(false)
 

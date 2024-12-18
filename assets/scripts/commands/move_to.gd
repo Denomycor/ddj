@@ -28,11 +28,10 @@ func physics_process(_delta: float) -> void:
 
 
 func exit(_next_state: State) -> void:
+	troop.velocity = Vector2.ZERO
 	if(tween.is_valid()):
 		tween.kill()
 
 
 func leave_command() -> void:
-	troop.velocity = Vector2.ZERO
 	state_machine.transition(self, "no_command")
-
