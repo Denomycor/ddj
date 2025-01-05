@@ -21,11 +21,13 @@ motion_mode = 1
 script = ExtResource("1_2icef")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -24.0
+offset_left = -64.0
 offset_top = -32.0
-offset_right = 16.0
+offset_right = 64.0
 offset_bottom = -9.0
-text = "teste"
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sedtw")

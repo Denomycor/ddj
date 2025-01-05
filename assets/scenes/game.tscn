@@ -1,97 +1,38 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvi3u4ffos2fs"]
+[gd_scene load_steps=3 format=3 uid="uid://dy8rsm0kfaoox"]
 
-[ext_resource type="PackedScene" uid="uid://n8cohatmpk2b" path="res://assets/scenes/troops/troop.tscn" id="1_pb5o7"]
-[ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="2_lc1ea"]
-[ext_resource type="Script" path="res://assets/scripts/selection_rect.gd" id="3_i2e0i"]
-[ext_resource type="Script" path="res://assets/scripts/command_buttons/move_to_button.gd" id="4_l1r15"]
-[ext_resource type="Script" path="res://assets/scripts/command_buttons/command_button.gd" id="5_vhcip"]
+[ext_resource type="Script" path="res://assets/scripts/game.gd" id="1_5y50h"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_scow5"]
-device = -1
-keycode = 49
-unicode = 49
+[sub_resource type="LabelSettings" id="LabelSettings_yls7n"]
+font_size = 40
 
-[sub_resource type="Shortcut" id="Shortcut_35cec"]
-events = [SubResource("InputEventKey_scow5")]
+[node name="game" type="Node"]
+script = ExtResource("1_5y50h")
 
-[sub_resource type="InputEventKey" id="InputEventKey_wesjk"]
-device = -1
-keycode = 50
-unicode = 50
+[node name="main_menu" type="CanvasLayer" parent="."]
 
-[sub_resource type="Shortcut" id="Shortcut_vt280"]
-events = [SubResource("InputEventKey_wesjk")]
-
-[node name="game" type="Node2D"]
-
-[node name="troop" parent="." instance=ExtResource("1_pb5o7")]
-position = Vector2(552, 328)
-
-[node name="troop2" parent="." instance=ExtResource("1_pb5o7")]
-position = Vector2(392, 422)
-
-[node name="troop3" parent="." instance=ExtResource("1_pb5o7")]
-position = Vector2(767, 149)
-
-[node name="troop4" parent="." instance=ExtResource("1_pb5o7")]
-position = Vector2(536, 280)
-
-[node name="enemy_troop" parent="." instance=ExtResource("2_lc1ea")]
-position = Vector2(263, 171)
-
-[node name="selection_rect" type="CanvasLayer" parent="."]
-script = ExtResource("3_i2e0i")
-
-[node name="Panel" type="Panel" parent="selection_rect"]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-size_flags_horizontal = 4
-mouse_filter = 2
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-anchors_preset = 12
-anchor_top = 1.0
+[node name="VBoxContainer" type="VBoxContainer" parent="main_menu"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 8
+grow_vertical = 2
 alignment = 1
 
-[node name="move_to" type="Button" parent="UI/HBoxContainer"]
-visible = false
+[node name="Label" type="Label" parent="main_menu/VBoxContainer"]
 layout_mode = 2
-shortcut = SubResource("Shortcut_35cec")
-text = "Move to (1)"
-script = ExtResource("4_l1r15")
+text = "Chico Da Tina"
+label_settings = SubResource("LabelSettings_yls7n")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="no_command" type="Button" parent="UI/HBoxContainer"]
-visible = false
+[node name="play" type="Button" parent="main_menu/VBoxContainer"]
 layout_mode = 2
-shortcut = SubResource("Shortcut_vt280")
-text = "Idle (2)"
-script = ExtResource("5_vhcip")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"
 
-[node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 664.0
-offset_top = 416.0
-offset_right = 1131.0
-offset_bottom = 621.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Não troco o skate por nenhuma hoe, backside 50 e Five-0
-Meu irmão viu-me a sacar switch backside flip e gritou: wow
-Isso foi dope, ganda toque, palminhas, meu bro do norte
-Como eu é out of stock, tenho talento, nunca foi sorte
-Jovem Dex pa' ti um props, no Brasil 'tava no resort
-Parti-a e dei-lhe o corte, anda lá, sai do meu quarto
-Eu não dou pa' esse peditório, 'tá pela fama, eu não suporto
-Sou fodido, isso eu concordo, compreensivo isso eu discordo"
+[node name="quit" type="Button" parent="main_menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Quit"
