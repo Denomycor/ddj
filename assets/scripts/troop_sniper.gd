@@ -13,7 +13,7 @@ func _ready() -> void:
 	projectile_spawner_component.shoot_projectile.connect(func(from: Vector2, rot: float, _data: Variant):
 		var instance: Projectile = PROJ_SCENE.instantiate()
 		get_parent().add_child(instance)
-		instance.speed = 40
+		instance.speed = 20
 		instance.max_range = 20000
 		instance.damage = 5
 		instance.set_properties_and_start(from, rot)
