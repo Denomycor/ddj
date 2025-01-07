@@ -24,4 +24,3 @@ func _physics_process(delta: float) -> void:
 ## Get all command names available for this troop
 func list_available_commands() -> Array:
 	return command_state_machine.all_states.keys()
-

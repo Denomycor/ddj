@@ -33,4 +33,3 @@ func shoot(to: Vector2, data: Variant = null) -> void:
 			shoot_projectile.emit(global_position, angle, data)
 		proj_ready = false
 		delay_acc = fire_delay
-
