@@ -26,3 +26,12 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_0g1ag")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-4, 0)
+enabled = false
+target_position = Vector2(0, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false

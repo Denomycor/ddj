@@ -16,6 +16,7 @@ size = Vector2(16, 16)
 radius = 224.009
 
 [node name="TroopSniper" type="CharacterBody2D" groups=["player_troops"]]
+collision_mask = 3
 script = ExtResource("1_ptpsf")
 
 [node name="Label" type="Label" parent="."]
@@ -39,7 +40,7 @@ script = ExtResource("1_numxf")
 aprox_distance = 22
 
 [node name="HitboxComponent" type="Area2D" parent="."]
-collision_layer = 2
+collision_mask = 0
 monitoring = false
 script = ExtResource("2_lfof0")
 
