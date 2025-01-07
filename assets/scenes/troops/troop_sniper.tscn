@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://b788vuq587th7"]
+
+[ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="1_numxf"]
+[ext_resource type="Script" path="res://assets/scripts/troop_sniper.gd" id="1_ptpsf"]
+[ext_resource type="Script" path="res://assets/scripts/components/hitbox_sniper_component.gd" id="2_lfof0"]
+[ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="3_xsh2q"]
+[ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_sniper_component.gd" id="5_u6pe2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1wx"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idtss"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ni87"]
+radius = 224.009
+
+[node name="TroopSniper" type="CharacterBody2D" groups=["player_troops"]]
+script = ExtResource("1_ptpsf")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = -9.0
+text = "sniper eheh"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yy1wx")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.606145, 0.387846, 0.953258, 1)
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[node name="CommandComponent" type="Node" parent="."]
+script = ExtResource("1_numxf")
+aprox_distance = 22
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+monitoring = false
+script = ExtResource("2_lfof0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_idtss")
+
+[node name="PerceptionComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("3_xsh2q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionComponent"]
+shape = SubResource("CircleShape2D_4ni87")
+
+[node name="ProjectileSpawnerComponent" type="Node2D" parent="."]
+position = Vector2(8, 0)
+script = ExtResource("5_u6pe2")

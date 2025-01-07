@@ -20,7 +20,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="main_menu/VBoxContainer"]
 layout_mode = 2
-text = "Robot something"
+text = "Chico Da Tina"
 label_settings = SubResource("LabelSettings_yls7n")
 horizontal_alignment = 1
 vertical_alignment = 1

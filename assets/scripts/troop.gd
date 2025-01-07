@@ -19,4 +19,3 @@ func _process(_delta: float) -> void:
 	var target := perception_component.get_closest_target()
 	if(target):
 		projectile_spawner_component.shoot(target.global_position)
-

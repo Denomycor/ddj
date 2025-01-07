@@ -13,7 +13,6 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_ebxyq")
 speed = 20
-max_range = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2i41t")
