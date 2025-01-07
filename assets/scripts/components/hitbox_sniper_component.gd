@@ -10,7 +10,6 @@ var current_hp := max_hp
 
 
 func deal_damage(value: float) -> void:
-	print("Deal Damage Called on Sniper Hitbox with value:", value)
 	if(current_hp > value):
 		current_hp -= value
 		hit.emit(value)

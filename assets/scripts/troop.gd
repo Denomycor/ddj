@@ -14,7 +14,6 @@ func _ready() -> void:
 		instance.set_properties_and_start(from, rot)
 	)
 
-
 func _process(_delta: float) -> void:
 	var target := perception_component.get_closest_target()
 	if(target):

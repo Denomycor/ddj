@@ -3,13 +3,6 @@
 [sub_resource type="GDScript" id="GDScript_e5844"]
 script/source = "class_name ProjectileSniper extends Projectile
 
-@export var speed := 600  #velocidade maior que a bala normal
-@export var max_range := 20000  #alcance maior
-@export var damage := 5  #dano mais alto que o troop normal
-
-var distance_acc := 0.0
-var locked := true
-
 func _ready() -> void:
 	$Area2D.area_entered.connect(func(area: Area2D):
 		if (area is HitboxComponent):
@@ -53,9 +46,6 @@ size = Vector2(8, 8)
 collision_layer = 4
 collision_mask = 0
 script = SubResource("GDScript_e5844")
-speed = null
-max_range = null
-damage = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2i41t")
