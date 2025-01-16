@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvi3u4ffos2fs"]
+[gd_scene load_steps=12 format=3 uid="uid://cvi3u4ffos2fs"]
 
 [ext_resource type="PackedScene" uid="uid://n8cohatmpk2b" path="res://assets/scenes/troops/troop.tscn" id="1_lm31w"]
 [ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="2_8ljbe"]
@@ -6,6 +6,11 @@
 [ext_resource type="Script" path="res://assets/scripts/command_buttons/move_to_button.gd" id="4_a6ie6"]
 [ext_resource type="Script" path="res://assets/scripts/command_buttons/command_button.gd" id="5_seiyv"]
 [ext_resource type="Script" path="res://assets/scripts/pause_menu.gd" id="6_ulip5"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wl66o"]
+vertices = PackedVector2Array(1142, 638, 10, 638, 10, 10, 1142, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 648, 1152, 648, 1152, 0)])
 
 [sub_resource type="InputEventKey" id="InputEventKey_scow5"]
 device = -1
@@ -24,6 +29,9 @@ unicode = 50
 events = [SubResource("InputEventKey_wesjk")]
 
 [node name="test_level" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_wl66o")
 
 [node name="troop" parent="." instance=ExtResource("1_lm31w")]
 position = Vector2(552, 328)

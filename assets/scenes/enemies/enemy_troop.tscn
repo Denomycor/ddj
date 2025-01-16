@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://csdohlnm1sk6r"]
+[gd_scene load_steps=8 format=3 uid="uid://csdohlnm1sk6r"]
 
 [ext_resource type="Script" path="res://assets/scripts/enemy_troop.gd" id="1_ec2r6"]
 [ext_resource type="Script" path="res://assets/scripts/components/hitbox_component.gd" id="1_g0cwo"]
+[ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="3_8rj78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gevu"]
 size = Vector2(8, 8)
@@ -9,9 +10,16 @@ size = Vector2(8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibi3m"]
 size = Vector2(16, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgxma"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbu84"]
+radius = 80.0
+
 [node name="enemy_troop" type="CharacterBody2D" groups=["enemy_troops"]]
 collision_layer = 2
 collision_mask = 3
+motion_mode = 1
 script = ExtResource("1_ec2r6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,3 +37,24 @@ script = ExtResource("1_g0cwo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_ibi3m")
+
+[node name="PerceptionComponent" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+script = ExtResource("3_8rj78")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionComponent"]
+shape = SubResource("CircleShape2D_fgxma")
+
+[node name="attack_range" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+script = ExtResource("3_8rj78")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_range"]
+shape = SubResource("CircleShape2D_rbu84")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Timer" type="Timer" parent="NavigationAgent2D"]
+wait_time = 0.5
