@@ -13,11 +13,18 @@ func _ready() -> void:
 	hitbox_component.hit.connect(print)
 
 	state_machine.add_state(State.new("idle"))
+	state_machine.add_state(ChaseState.new("chase"))
 	state_machine.starting_state("idle")
+	var tween := create_tween()
+	tween.tween_callback(transition.bind(state_machine.current_state)).set_delay(2) # TODO: TEMP
 
 
 func _physics_process(delta: float) -> void:
 	state_machine.physics_process(delta)
+
+
+func _process(delta: float) -> void:
+	state_machine.process(delta)
 
 
 func get_player_troops() -> Array[Node2D]:
@@ -30,10 +37,10 @@ func transition(state: State) -> void:
 
 	# If a ranger is in range attack it
 	if(has_ranger):
-		var _nearest_ranger: Array[Node2D] = ranger_list.reduce(func(acc: Node2D, e: Node2D):
+		var nearest_ranger: Node2D = ranger_list.reduce(func(acc: Node2D, e: Node2D):
 			return e if is_first_closer(e.global_position, acc.global_position) else acc
 		, ranger_list[0])
-		state_machine.transition(state, "chase_ranger")
+		state_machine.transition(state, "chase", nearest_ranger)
 
 	# If no ranger is in range attack any troop
 	else:

@@ -37,7 +37,7 @@ navigation_polygon = SubResource("NavigationPolygon_wl66o")
 position = Vector2(552, 328)
 
 [node name="troop2" parent="." instance=ExtResource("1_lm31w")]
-position = Vector2(392, 422)
+position = Vector2(344, 343)
 
 [node name="troop3" parent="." instance=ExtResource("1_lm31w")]
 position = Vector2(767, 149)

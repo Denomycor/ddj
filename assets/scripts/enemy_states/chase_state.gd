@@ -1,3 +1,4 @@
+## Base class for following a target, override to extends behavior and define transitions
 class_name ChaseState extends State
 
 
@@ -25,8 +26,8 @@ func physics_process(_delta: float) -> void:
 	if(!nav_agent.is_navigation_finished()):
 		var next_point := nav_agent.get_next_path_position()
 		var motion: Vector2 = troop.global_position.direction_to(next_point) * troop.speed
-		# nav_agent.set_velocity(motion)
 		_on_velocity_computed(motion)
+		# nav_agent.set_velocity(motion)
 
 
 func exit(_next_state: State) -> void:
@@ -43,6 +44,8 @@ func _on_velocity_computed(velocity: Vector2) -> void:
 
 func calculate_path() -> void:
 	nav_agent.set_target_position(target.global_position)
+	if(!nav_agent.is_target_reachable()):
+		print("Impossible to reach the target")
 
 
 func leave_state() -> void:
