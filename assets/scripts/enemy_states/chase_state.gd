@@ -31,7 +31,7 @@ func physics_process(_delta: float) -> void:
 
 
 func exit(_next_state: State) -> void:
-	nav_agent.velocity_computed.disconnect(_on_velocity_computed)
+	# nav_agent.velocity_computed.disconnect(_on_velocity_computed)
 	nav_agent.get_node("Timer").stop()
 	nav_agent.get_node("Timer").timeout.disconnect(calculate_path)
 	target.get_node("HitboxComponent").died.disconnect(leave_state)
@@ -50,4 +50,3 @@ func calculate_path() -> void:
 
 func leave_state() -> void:
 	pass
-

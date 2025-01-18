@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cvi3u4ffos2fs"]
 
 [ext_resource type="PackedScene" uid="uid://n8cohatmpk2b" path="res://assets/scenes/troops/troop.tscn" id="1_lm31w"]
-[ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="2_8ljbe"]
+[ext_resource type="PackedScene" uid="uid://bune1a7rrsgdw" path="res://assets/scenes/enemies/enemy_rusher.tscn" id="2_ui34s"]
 [ext_resource type="Script" path="res://assets/scripts/selection_rect.gd" id="3_mw2rs"]
 [ext_resource type="Script" path="res://assets/scripts/command_buttons/move_to_button.gd" id="4_a6ie6"]
 [ext_resource type="Script" path="res://assets/scripts/command_buttons/command_button.gd" id="5_seiyv"]
@@ -45,8 +45,8 @@ position = Vector2(767, 149)
 [node name="troop4" parent="." instance=ExtResource("1_lm31w")]
 position = Vector2(536, 280)
 
-[node name="enemy_troop" parent="." instance=ExtResource("2_8ljbe")]
-position = Vector2(263, 171)
+[node name="enemy_rusher" parent="." instance=ExtResource("2_ui34s")]
+position = Vector2(232, 184)
 
 [node name="selection_rect" type="CanvasLayer" parent="."]
 script = ExtResource("3_mw2rs")

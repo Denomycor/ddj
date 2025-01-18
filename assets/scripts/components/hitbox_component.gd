@@ -17,4 +17,3 @@ func deal_damage(value: float) -> void:
 		current_hp = 0
 		hit.emit(value)
 		died.emit()
-
