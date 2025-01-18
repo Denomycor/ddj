@@ -61,3 +61,5 @@ position = Vector2(8, 0)
 script = ExtResource("5_yi441")
 fire_delay = 1.0
 multishot = 1
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

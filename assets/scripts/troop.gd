@@ -4,6 +4,8 @@ const PROJ_SCENE := preload("res://assets/scenes/projectiles/projectile.tscn")
 
 var designation := "ranger"
 
+@export var speed: float = 100.0 
+
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var perception_component: PerceptionComponent = $PerceptionComponent
 @onready var projectile_spawner_component: ProjectileSpawnerComponent = $ProjectileSpawnerComponent
@@ -24,4 +26,3 @@ func _process(_delta: float) -> void:
 	var target := perception_component.get_closest_target()
 	if(target):
 		projectile_spawner_component.shoot(target.global_position)
-
