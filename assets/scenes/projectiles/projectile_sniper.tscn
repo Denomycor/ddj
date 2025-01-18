@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://hil8av717yta"]
+[gd_scene load_steps=4 format=3 uid="uid://dopxaia40dale"]
 
 [sub_resource type="GDScript" id="GDScript_e5844"]
 script/source = "class_name ProjectileSniper extends Projectile

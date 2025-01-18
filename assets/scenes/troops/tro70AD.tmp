@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="1_numxf"]
 [ext_resource type="Script" path="res://assets/scripts/troop_sniper.gd" id="1_ptpsf"]
-[ext_resource type="Script" path="res://assets/scripts/components/hitbox_component.gd" id="3_81rlf"]
+[ext_resource type="Script" path="res://assets/scripts/components/hitbox_sniper_component.gd" id="2_lfof0"]
 [ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="3_xsh2q"]
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_u6pe2"]
 [ext_resource type="Texture2D" uid="uid://bslf185d634gn" path="res://assets/images/troopsniper.png" id="6_1u6hl"]
@@ -14,7 +14,7 @@ size = Vector2(8, 8)
 size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ni87"]
-radius = 348.013
+radius = 224.009
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7goip"]
 atlas = ExtResource("6_1u6hl")
@@ -161,7 +161,6 @@ offset_bottom = -9.0
 text = "sniper eheh"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yy1wx")
@@ -172,11 +171,12 @@ polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 
 [node name="CommandComponent" type="Node" parent="."]
 script = ExtResource("1_numxf")
+aprox_distance = 22
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 2
 monitoring = false
-script = ExtResource("3_81rlf")
+script = ExtResource("2_lfof0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_idtss")
@@ -189,13 +189,10 @@ script = ExtResource("3_xsh2q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionComponent"]
 shape = SubResource("CircleShape2D_4ni87")
-debug_color = Color(0, 0.6, 0.701961, 0.498039)
 
 [node name="ProjectileSpawnerComponent" type="Node2D" parent="."]
 position = Vector2(8, 0)
 script = ExtResource("5_u6pe2")
-fire_delay = 2.0
-multishot = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, -10)

@@ -1,8 +1,8 @@
 class_name TroopSniper extends CharacterBody2D
 
-@onready var hitbox_component: HitboxSniperComponent = $HitboxComponent
+@onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var perception_component: PerceptionComponent = $PerceptionComponent
-@onready var projectile_spawner_component: ProjectileSpawnerSniperComponent = $ProjectileSpawnerComponent
+@onready var projectile_spawner_component: ProjectileSpawnerComponent = $ProjectileSpawnerComponent
 
 const PROJ_SCENE := preload("res://assets/scenes/projectiles/projectile.tscn")
 

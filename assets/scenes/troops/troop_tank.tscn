@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://assets/scripts/troop_tank.gd" id="1_nhw18"]
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="2_wayhf"]
-[ext_resource type="Script" path="res://assets/scripts/components/hitbox_tank_component.gd" id="3_e6fmu"]
+[ext_resource type="Script" path="res://assets/scripts/components/hitbox_component.gd" id="3_jp305"]
 [ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="4_nahql"]
-[ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_tank_component.gd" id="5_25p5h"]
+[ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_t7q8l"]
 [ext_resource type="Texture2D" uid="uid://143bp6pv7aqn" path="res://assets/images/trooptank.png" id="6_w7iev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1wx"]
@@ -14,7 +14,7 @@ size = Vector2(8, 8)
 size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ni87"]
-radius = 224.009
+radius = 371.507
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4t5fq"]
 atlas = ExtResource("6_w7iev")
@@ -93,7 +93,7 @@ aprox_distance = 22
 scale = Vector2(0.816609, 0.816609)
 collision_layer = 2
 monitoring = false
-script = ExtResource("3_e6fmu")
+script = ExtResource("3_jp305")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_idtss")
@@ -105,12 +105,16 @@ monitorable = false
 script = ExtResource("4_nahql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionComponent"]
+position = Vector2(3, 2)
 scale = Vector2(0.137701, 0.137557)
 shape = SubResource("CircleShape2D_4ni87")
 
 [node name="ProjectileSpawnerComponent" type="Node2D" parent="."]
 position = Vector2(8, 0)
-script = ExtResource("5_25p5h")
+script = ExtResource("5_t7q8l")
+fire_delay = 1.0
+multishot = 2
+spread = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
