@@ -10,6 +10,8 @@ var designation := "ranger"
 
 
 func _ready() -> void:
+	hitbox_component.died.connect(queue_free)
+
 	projectile_spawner_component.shoot_projectile.connect(func(from: Vector2, rot: float, _data: Variant):
 		var instance: Projectile = PROJ_SCENE.instantiate()
 		get_parent().add_child(instance)
