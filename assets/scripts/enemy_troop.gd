@@ -39,4 +39,3 @@ func is_first_closer(st: Vector2, nd: Vector2) -> bool:
 class Wait2State extends WaitState:
 	func leave_state() -> void:
 		state_machine.transition(self, "idle")
-

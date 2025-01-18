@@ -22,7 +22,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func start_rect() -> void:
 	start_point = get_parent().get_global_mouse_position()
 	for t in selected_troops:
-		t.get_node("Polygon2D").color = Color.WHITE
+		if(is_instance_valid(t)):
+			t.get_node("Polygon2D").color = Color.WHITE
 	update_command_ui([])
 	selected_troops = []
 	is_selecting = true
@@ -78,4 +79,3 @@ func update_command_ui(commands: Array[String]) -> void:
 			l.toggle_enabled(true)
 		else:
 			l.toggle_enabled(false)
-

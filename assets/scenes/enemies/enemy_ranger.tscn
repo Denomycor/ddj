@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddcbuf48u5jbs"]
+
+[ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="1_na4if"]
+[ext_resource type="Script" path="res://assets/scripts/enemy_ranger.gd" id="2_jolyd"]
+[ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="3_r424m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jw5no"]
+radius = 144.0
+
+[node name="enemy_ranger" instance=ExtResource("1_na4if")]
+script = ExtResource("2_jolyd")
+
+[node name="CollisionShape2D" parent="attack_range" index="0"]
+shape = SubResource("CircleShape2D_jw5no")
+
+[node name="NavigationAgent2D" parent="." index="6"]
+target_desired_distance = 130.0
+
+[node name="ProjectileSpawnerComponent" type="Node2D" parent="." index="8"]
+script = ExtResource("3_r424m")
+fire_delay = 1.0
+multishot = 1

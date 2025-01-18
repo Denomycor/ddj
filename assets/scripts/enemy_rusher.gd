@@ -20,7 +20,7 @@ func transition_rusher(state: State) -> void:
 			state_machine.transition(state, "idle")
 
 	# If a ranger is in range attack it
-	if(has_ranger):
+	elif(has_ranger):
 		var nearest_ranger: Node2D = ranger_list.reduce(func(acc: Node2D, e: Node2D):
 			return e if is_first_closer(e.global_position, acc.global_position) else acc
 		, ranger_list[0])
@@ -28,9 +28,7 @@ func transition_rusher(state: State) -> void:
 
 	# If no ranger is in range attack any troop
 	else:
-		var nearest_target: Node2D = perception_component.enemies_in_range.reduce(func(acc: Node2D, e: Node2D):
-			return e if is_first_closer(e.global_position, acc.global_position) else acc
-		, perception_component.enemies_in_range[0])
+		var nearest_target: Node2D = perception_component.get_closest_target()
 		state_machine.transition(state, "chase", nearest_target)
 
 
@@ -49,7 +47,7 @@ class Chase2State extends ChaseState:
 
 	var attack_ready := true
 	const ATTACK_DELAY := 1
-	const ATTACK_DAMAGE := 1
+	const ATTACK_DAMAGE := 10
 
 	func leave_state() -> void:
 		state_machine.transition(self, "wait", 0.2)
@@ -68,4 +66,3 @@ class Chase2State extends ChaseState:
 			attack_ready = false
 			var tween := troop.create_tween()
 			tween.tween_callback(func(): attack_ready = true).set_delay(ATTACK_DELAY)
-
