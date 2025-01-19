@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://83d83cpoajj6"]
+
+[ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="1_pgc4o"]
+[ext_resource type="Script" path="res://assets/scripts/enemy_tank.gd" id="2_lwg12"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xhhkb"]
+radius = 30.0
+
+[node name="enemy_tank" instance=ExtResource("1_pgc4o")]
+script = ExtResource("2_lwg12")
+
+[node name="CollisionShape2D" parent="attack_range" index="0"]
+shape = SubResource("CircleShape2D_xhhkb")
+
+[node name="chase_timer" type="Timer" parent="." index="8"]
+wait_time = 5.0
+one_shot = true

@@ -17,5 +17,5 @@ func toggle_enabled(state: bool) -> void:
 
 func for_command_component(function: Callable) -> void:
 	for e in selection_rect.selected_troops:
-		function.call(e.get_node("CommandComponent"))
-
+		if(is_instance_valid(e)):
+			function.call(e.get_node("CommandComponent"))
