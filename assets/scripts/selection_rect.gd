@@ -78,4 +78,3 @@ func update_command_ui(commands: Array[String]) -> void:
 			l.toggle_enabled(true)
 		else:
 			l.toggle_enabled(false)
-

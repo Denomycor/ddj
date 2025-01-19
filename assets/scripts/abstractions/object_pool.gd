@@ -35,4 +35,3 @@ func _notification(what: int) -> void:
 		for e in buffer:
 			if(e != null && e.get_parent() != null):
 				e.free()
-
