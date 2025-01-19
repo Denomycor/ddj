@@ -48,14 +48,13 @@ func update_rect() -> void:
 
 	for t in selected_troops:
 		t.get_node("Polygon2D").color = Color.WHITE
-	selected_troops = get_tree().get_nodes_in_group("player_troops").filter(func(e: Troop):
+	selected_troops = get_tree().get_nodes_in_group("player_troops").filter(func(e):
 		return rect.has_point(e.global_position)
 	)
 	for t in selected_troops:
 		t.get_node("Polygon2D").color = Color.BLUE
 	
 	handle_selection()
-	
 
 # TODO: temp
 func forward_command() -> void:

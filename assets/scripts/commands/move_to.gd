@@ -3,14 +3,14 @@ class_name MoveTo extends State
 const MAX_MOVE_TIME := 20
 
 var target_pos: Vector2
-var troop: Troop
+var troop: CharacterBody2D
 var tween: Tween
 
 
 func prepare() -> void:
 	troop = owner.parent
 
-
+		
 func enter(_previous_state: State, args) -> void:
 	assert(args is Vector2)
 	target_pos = args

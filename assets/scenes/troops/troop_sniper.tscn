@@ -1,0 +1,205 @@
+[gd_scene load_steps=29 format=3 uid="uid://b788vuq587th7"]
+
+[ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="1_numxf"]
+[ext_resource type="Script" path="res://assets/scripts/troop_sniper.gd" id="1_ptpsf"]
+[ext_resource type="Script" path="res://assets/scripts/components/hitbox_component.gd" id="3_81rlf"]
+[ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="3_xsh2q"]
+[ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_u6pe2"]
+[ext_resource type="Texture2D" uid="uid://bslf185d634gn" path="res://assets/images/troopsniper.png" id="6_1u6hl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1wx"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idtss"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ni87"]
+radius = 348.013
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7goip"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(0, 0, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mat8c"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(700, 0, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qisa5"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(1400, 0, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6va3"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(2100, 0, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e61t"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(0, 640, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixw2p"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(700, 640, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbjmd"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(1400, 640, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7rwp"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(2100, 640, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g3cb"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(0, 1280, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww1ar"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(700, 1280, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2whh8"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(1400, 1280, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjfcy"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(2100, 1280, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4a8r"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(0, 1920, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oga2"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(700, 1920, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrm52"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(1400, 1920, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wytx"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(2100, 1920, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_115y8"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(0, 2560, 700, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l6vh"]
+atlas = ExtResource("6_1u6hl")
+region = Rect2(700, 2560, 700, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dykr3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7goip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mat8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qisa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6va3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e61t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixw2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbjmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7rwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g3cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww1ar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2whh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjfcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4a8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oga2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrm52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wytx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_115y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l6vh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TroopSniper" type="CharacterBody2D" groups=["player_troops"]]
+script = ExtResource("1_ptpsf")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = -9.0
+text = "sniper eheh"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yy1wx")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.606145, 0.387846, 0.953258, 1)
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[node name="CommandComponent" type="Node" parent="."]
+script = ExtResource("1_numxf")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+monitoring = false
+script = ExtResource("3_81rlf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_idtss")
+
+[node name="PerceptionComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("3_xsh2q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionComponent"]
+shape = SubResource("CircleShape2D_4ni87")
+debug_color = Color(0, 0.6, 0.701961, 0.498039)
+
+[node name="ProjectileSpawnerComponent" type="Node2D" parent="."]
+position = Vector2(8, 0)
+script = ExtResource("5_u6pe2")
+fire_delay = 2.0
+multishot = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, -10)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_dykr3")
+autoplay = "default"
+frame_progress = 0.16332

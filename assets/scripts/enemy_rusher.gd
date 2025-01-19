@@ -11,7 +11,7 @@ func _ready() -> void:
 
 ## Decide which state to transition to
 func transition_rusher(state: State) -> void:
-	var ranger_list := perception_component.enemies_in_range.filter(func(e): return e.designation == "ranger")
+	var ranger_list := perception_component.enemies_in_range.filter(func(e): return e is TroopSniper)
 	var has_ranger := !ranger_list.is_empty()
 
 	# No enemies, stay put

@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://dopxaia40dale"]
+
+[sub_resource type="GDScript" id="GDScript_e5844"]
+script/source = "class_name ProjectileSniper extends Projectile
+
+func _ready() -> void:
+	$Area2D.area_entered.connect(func(area: Area2D):
+		if (area is HitboxComponent):
+			area.deal_damage(damage)
+			destroy()
+	)
+
+func set_properties_and_start(from: Vector2, rot: float) -> void:
+	global_position = from
+	rotation = rot
+	locked = false
+
+func _physics_process(_delta: float) -> void:
+	assert(!locked)
+	var direction := Vector2.from_angle(rotation)
+	var motion := direction * speed
+	distance_acc += motion.length()
+
+	if (distance_acc > max_range):
+		destroy()
+	else:
+		velocity = motion
+		var collision := move_and_collide(motion)
+		if (collision):
+			handle_collision(collision)
+
+func handle_collision(_collision: KinematicCollision2D) -> void:
+	destroy()
+
+func destroy() -> void:
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i41t"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g1ag"]
+size = Vector2(8, 8)
+
+[node name="projectile_sniper" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = SubResource("GDScript_e5844")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2i41t")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.12549, 1, 1)
+polygon = PackedVector2Array(-4, -4, -4, 4, 4, 4, 4, -4)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0g1ag")

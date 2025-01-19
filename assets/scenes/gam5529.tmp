@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy8rsm0kfaoox"]
+
+[ext_resource type="Script" path="res://assets/scripts/game.gd" id="1_5y50h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yls7n"]
+font_size = 40
+
+[node name="game" type="Node"]
+script = ExtResource("1_5y50h")
+
+[node name="main_menu" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main_menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="main_menu/VBoxContainer"]
+layout_mode = 2
+text = "Chico Da Tina"
+label_settings = SubResource("LabelSettings_yls7n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="play" type="Button" parent="main_menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"
+
+[node name="quit" type="Button" parent="main_menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Quit"

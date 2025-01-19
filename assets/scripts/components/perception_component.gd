@@ -22,4 +22,3 @@ func get_closest_target() -> PhysicsBody2D:
 		return enemies_in_range.reduce(func(acc: PhysicsBody2D, e: PhysicsBody2D):
 			return acc if global_position.distance_squared_to(acc.global_position) < global_position.distance_squared_to(e.global_position) else e
 		, enemies_in_range[0])
-
