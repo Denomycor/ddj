@@ -2,8 +2,6 @@ class_name Troop extends CharacterBody2D
 
 const PROJ_SCENE := preload("res://assets/scenes/projectiles/projectile.tscn")
 
-var designation := "ranger"
-
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var perception_component: PerceptionComponent = $PerceptionComponent
 @onready var projectile_spawner_component: ProjectileSpawnerComponent = $ProjectileSpawnerComponent
