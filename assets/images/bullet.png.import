@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://143bp6pv7aqn"
-path="res://.godot/imported/trooptank.png-9206bcf9bc60043eb9934c8b27d66552.ctex"
+uid="uid://cstnb51le8hdi"
+path="res://.godot/imported/bullet.png-233c01ebf7a36dda9b4884fdef5413e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/trooptank.png"
-dest_files=["res://.godot/imported/trooptank.png-9206bcf9bc60043eb9934c8b27d66552.ctex"]
+source_file="res://assets/images/bullet.png"
+dest_files=["res://.godot/imported/bullet.png-233c01ebf7a36dda9b4884fdef5413e0.ctex"]
 
 [params]
 

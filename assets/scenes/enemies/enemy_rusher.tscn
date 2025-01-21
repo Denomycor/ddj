@@ -9,6 +9,9 @@ radius = 30.0
 [node name="enemy_rusher" instance=ExtResource("1_moaud")]
 script = ExtResource("2_27e2o")
 
+[node name="Label" parent="." index="0"]
+metadata/_edit_use_anchors_ = true
+
 [node name="CollisionShape2D" parent="attack_range" index="0"]
 shape = SubResource("CircleShape2D_8ma3y")
 

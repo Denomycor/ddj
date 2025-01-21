@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bslf185d634gn"
-path="res://.godot/imported/troopsniper.png-b0de66bb57fd6b3ee306e215963c5dba.ctex"
+uid="uid://3t6dpy4h2r1s"
+path="res://.godot/imported/troop.png-accf5de00150796697a2f4276a4b489b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/troopsniper.png"
-dest_files=["res://.godot/imported/troopsniper.png-b0de66bb57fd6b3ee306e215963c5dba.ctex"]
+source_file="res://assets/images/troop.png"
+dest_files=["res://.godot/imported/troop.png-accf5de00150796697a2f4276a4b489b.ctex"]
 
 [params]
 

@@ -63,4 +63,3 @@ class AproachState extends ChaseState:
 		if(nav_agent.is_navigation_finished()):
 			(owner as EnemyTroop).transition_ranger(self)
 		super.physics_process(delta)
-

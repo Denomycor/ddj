@@ -17,7 +17,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	get_node("../Label").text = command_state_machine.current_state.name
 	command_state_machine.physics_process(delta)
 
 

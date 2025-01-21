@@ -117,4 +117,3 @@ class Protect2State extends ProtectState:
 
 		# We move the entt here
 		super.physics_process(delta)
-

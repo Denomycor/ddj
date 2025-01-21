@@ -1,82 +1,61 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcx535yy3ub28"]
+[gd_scene load_steps=13 format=3 uid="uid://dcx535yy3ub28"]
 
 [ext_resource type="Script" path="res://assets/scripts/troop_tank.gd" id="1_nhw18"]
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="2_wayhf"]
 [ext_resource type="Script" path="res://assets/scripts/components/hitbox_component.gd" id="3_jp305"]
 [ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="4_nahql"]
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_t7q8l"]
-[ext_resource type="Texture2D" uid="uid://143bp6pv7aqn" path="res://assets/images/trooptank.png" id="6_w7iev"]
+[ext_resource type="Texture2D" uid="uid://2ajqh0fldyax" path="res://assets/images/tank.png" id="6_5wky4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1wx"]
 size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idtss"]
-size = Vector2(16, 16)
+size = Vector2(50.8602, 82.3729)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ni87"]
-radius = 371.507
+radius = 334.136
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4t5fq"]
-atlas = ExtResource("6_w7iev")
-region = Rect2(0, 0, 456, 352)
+[sub_resource type="Animation" id="Animation_vauwb"]
+resource_name = "shoot"
+length = 0.333337
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tar46"]
-atlas = ExtResource("6_w7iev")
-region = Rect2(456, 0, 456, 352)
+[sub_resource type="Animation" id="Animation_21rxp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1fd2x"]
-atlas = ExtResource("6_w7iev")
-region = Rect2(0, 352, 456, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mhuo7"]
-atlas = ExtResource("6_w7iev")
-region = Rect2(456, 352, 456, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tphgq"]
-atlas = ExtResource("6_w7iev")
-region = Rect2(0, 704, 456, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ia5n"]
-atlas = ExtResource("6_w7iev")
-region = Rect2(456, 704, 456, 352)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bbb7c"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4t5fq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tar46")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1fd2x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mhuo7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tphgq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ia5n")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xx3ul"]
+_data = {
+"RESET": SubResource("Animation_21rxp"),
+"shoot": SubResource("Animation_vauwb")
+}
 
 [node name="TroopTank" type="CharacterBody2D" groups=["player_troops"]]
 script = ExtResource("1_nhw18")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -64.0
-offset_top = -32.0
-offset_right = 64.0
-offset_bottom = -9.0
-text = "TANK!!"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yy1wx")
@@ -96,6 +75,8 @@ monitoring = false
 script = ExtResource("3_jp305")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(1.22458, 6.57204)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_idtss")
 
 [node name="PerceptionComponent" type="Area2D" parent="."]
@@ -116,8 +97,12 @@ fire_delay = 1.0
 multishot = 2
 spread = 1.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-sprite_frames = SubResource("SpriteFrames_bbb7c")
-autoplay = "default"
-frame_progress = 0.789558
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(44, 7)
+texture = ExtResource("6_5wky4")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xx3ul")
+}

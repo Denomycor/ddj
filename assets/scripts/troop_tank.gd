@@ -3,6 +3,7 @@ class_name TroopTank extends CharacterBody2D
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var perception_component: PerceptionComponent = $PerceptionComponent
 @onready var projectile_spawner_component: ProjectileSpawnerComponent = $ProjectileSpawnerComponent
+@onready var animation_player = self.get_node("AnimationPlayer")
 
 const PROJ_SCENE := preload("res://assets/scenes/projectiles/projectile.tscn")
 
@@ -11,6 +12,9 @@ const JUMP_VELOCITY = -400.0
 
 func _ready() -> void:
 	projectile_spawner_component.shoot_projectile.connect(func(from: Vector2, rot: float, _data: Variant):
+		#animação de disparo
+		animation_player.play("shoot")
+		
 		var instance: Projectile = PROJ_SCENE.instantiate()
 		get_parent().add_child(instance)
 		instance.speed = 20
