@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcx535yy3ub28"]
+[gd_scene load_steps=14 format=3 uid="uid://dcx535yy3ub28"]
 
 [ext_resource type="Script" path="res://assets/scripts/troop_tank.gd" id="1_nhw18"]
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="2_wayhf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="4_nahql"]
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_t7q8l"]
 [ext_resource type="Texture2D" uid="uid://2ajqh0fldyax" path="res://assets/images/tank.png" id="6_5wky4"]
+[ext_resource type="AudioStream" uid="uid://bj3j3urpj5drx" path="res://assets/audio/animals_bear_growl_001.mp3" id="7_unk2q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1wx"]
 size = Vector2(48, 72)
@@ -55,6 +56,7 @@ _data = {
 
 [node name="TroopTank" type="CharacterBody2D" groups=["player_troops"]]
 script = ExtResource("1_nhw18")
+bear_sfx = ExtResource("7_unk2q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 5)
@@ -107,3 +109,11 @@ spread = 1.0
 libraries = {
 "": SubResource("AnimationLibrary_xx3ul")
 }
+
+[node name="bear_sfx" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_unk2q")
+volume_db = 24.0
+bus = &"SFX"
+
+[node name="SfxPlayer" type="AudioStreamPlayer2D" parent="."]

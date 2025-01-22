@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b788vuq587th7"]
+[gd_scene load_steps=14 format=3 uid="uid://b788vuq587th7"]
 
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="1_numxf"]
 [ext_resource type="Script" path="res://assets/scripts/troop_sniper.gd" id="1_ptpsf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="3_xsh2q"]
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_u6pe2"]
 [ext_resource type="Texture2D" uid="uid://1m3x0qqnjse2" path="res://assets/images/sniper.png" id="6_nekcq"]
+[ext_resource type="AudioStream" uid="uid://dg6w5iowiwcit" path="res://assets/audio/som-sniper.wav" id="7_2qwrv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1wx"]
 size = Vector2(93, 64)
@@ -55,6 +56,7 @@ _data = {
 
 [node name="TroopSniper" type="CharacterBody2D" groups=["player_troops"]]
 script = ExtResource("1_ptpsf")
+shoot_sfx = ExtResource("7_2qwrv")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -64.0
@@ -112,3 +114,11 @@ multishot = 1
 libraries = {
 "": SubResource("AnimationLibrary_bpl8o")
 }
+
+[node name="shoot_sfx" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_2qwrv")
+volume_db = 24.0
+bus = &"SFX"
+
+[node name="SfxPlayer" type="AudioStreamPlayer2D" parent="."]
