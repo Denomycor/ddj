@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcx535yy3ub28"]
+[gd_scene load_steps=20 format=3 uid="uid://dcx535yy3ub28"]
 
+[ext_resource type="Shader" path="res://assets/scenes/troops/troop.gdshader" id="1_ibrd7"]
 [ext_resource type="Script" path="res://assets/scripts/troop_tank.gd" id="1_nhw18"]
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="2_wayhf"]
 [ext_resource type="Script" path="res://assets/scripts/components/hitbox_component.gd" id="3_jp305"]
@@ -7,6 +8,11 @@
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_t7q8l"]
 [ext_resource type="Texture2D" uid="uid://2ajqh0fldyax" path="res://assets/images/tank.png" id="6_5wky4"]
 [ext_resource type="AudioStream" uid="uid://bj3j3urpj5drx" path="res://assets/audio/animals_bear_growl_001.mp3" id="7_unk2q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2royf"]
+shader = ExtResource("1_ibrd7")
+shader_parameter/outline_color = Vector4(0, 0, 1, 1)
+shader_parameter/outline_thickness = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1wx"]
 size = Vector2(48, 72)
@@ -16,6 +22,11 @@ size = Vector2(54.8199, 86.945)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ni87"]
 radius = 438.688
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ripmt"]
+shader = ExtResource("1_ibrd7")
+shader_parameter/outline_color = Vector4(0, 0, 1, 1)
+shader_parameter/outline_thickness = 3.0
 
 [sub_resource type="Animation" id="Animation_21rxp"]
 length = 0.001
@@ -73,6 +84,7 @@ ProgressBar/styles/background = SubResource("StyleBoxFlat_7es1k")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_f8m4n")
 
 [node name="TroopTank" type="CharacterBody2D" groups=["player_troops"]]
+material = SubResource("ShaderMaterial_2royf")
 script = ExtResource("1_nhw18")
 bear_sfx = ExtResource("7_unk2q")
 
@@ -111,6 +123,7 @@ scale = Vector2(0.137701, 0.137557)
 shape = SubResource("CircleShape2D_4ni87")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ripmt")
 position = Vector2(1, 0)
 texture = ExtResource("6_5wky4")
 offset = Vector2(50, 0)

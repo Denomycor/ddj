@@ -63,4 +63,3 @@ func _physics_process(delta: float) -> void:
 		print("Reached target position:", global_position)
 		is_dispersing = false  # Stop dispersing
 		navigation_agent.target_position = global_position  # Clear the target
-
