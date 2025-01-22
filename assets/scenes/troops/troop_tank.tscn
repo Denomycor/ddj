@@ -117,3 +117,5 @@ volume_db = 24.0
 bus = &"SFX"
 
 [node name="SfxPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
