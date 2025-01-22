@@ -311,7 +311,6 @@ position = Vector2(767, 149)
 position = Vector2(536, 280)
 
 [node name="enemy_rusher" parent="." instance=ExtResource("2_ui34s")]
-visible = false
 position = Vector2(232, 184)
 
 [node name="selection_rect" type="CanvasLayer" parent="."]
