@@ -20,4 +20,3 @@ func switch_from_level_to_main_menu(level: Node2D) -> void:
 	level.queue_free()
 	get_tree().paused = false
 	$main_menu.visible = true
-

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://83d83cpoajj6"]
+[gd_scene load_steps=13 format=3 uid="uid://83d83cpoajj6"]
 
 [ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="1_pgc4o"]
 [ext_resource type="Script" path="res://assets/scripts/enemy_tank.gd" id="2_lwg12"]
@@ -50,6 +50,24 @@ _data = {
 "shoot": SubResource("Animation_bp7ac")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqvub"]
+bg_color = Color(0.0687983, 0.0687983, 0.0687982, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyo8y"]
+bg_color = Color(0.50607, 0.662389, 0.233275, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_kx0j4"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_xqvub")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_fyo8y")
+
 [node name="enemy_tank" instance=ExtResource("1_pgc4o")]
 script = ExtResource("2_lwg12")
 speed = 50
@@ -85,3 +103,14 @@ hframes = 13
 libraries = {
 "": SubResource("AnimationLibrary_o0fjd")
 }
+
+[node name="hp_bar" type="ProgressBar" parent="." index="11"]
+offset_left = -32.0
+offset_top = -56.0
+offset_right = 32.0
+offset_bottom = -39.0
+theme = SubResource("Theme_kx0j4")
+max_value = 1000.0
+step = 1.0
+value = 500.0
+show_percentage = false

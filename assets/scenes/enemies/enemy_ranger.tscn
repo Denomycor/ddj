@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddcbuf48u5jbs"]
+[gd_scene load_steps=14 format=3 uid="uid://ddcbuf48u5jbs"]
 
 [ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="1_na4if"]
 [ext_resource type="Script" path="res://assets/scripts/enemy_ranger.gd" id="2_jolyd"]
@@ -51,6 +51,24 @@ shader = ExtResource("3_yqvlm")
 shader_parameter/outline_color = Vector4(1, 0, 0, 1)
 shader_parameter/outline_thickness = 2.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgraa"]
+bg_color = Color(0.0687983, 0.0687983, 0.0687982, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2mnai"]
+bg_color = Color(0.50607, 0.662389, 0.233275, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_rlk5k"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_vgraa")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_2mnai")
+
 [node name="enemy_ranger" instance=ExtResource("1_na4if")]
 script = ExtResource("2_jolyd")
 
@@ -88,3 +106,14 @@ position = Vector2(54, 16)
 script = ExtResource("3_r424m")
 fire_delay = 1.0
 multishot = 1
+
+[node name="hp_bar" type="ProgressBar" parent="." index="10"]
+offset_left = -32.0
+offset_top = -56.0
+offset_right = 32.0
+offset_bottom = -39.0
+theme = SubResource("Theme_rlk5k")
+max_value = 1000.0
+step = 1.0
+value = 500.0
+show_percentage = false
