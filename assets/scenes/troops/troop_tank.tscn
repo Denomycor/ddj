@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcx535yy3ub28"]
+[gd_scene load_steps=19 format=3 uid="uid://dcx535yy3ub28"]
 
 [ext_resource type="Script" path="res://assets/scripts/troop_tank.gd" id="1_nhw18"]
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="2_wayhf"]
