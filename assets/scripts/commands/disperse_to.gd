@@ -16,11 +16,15 @@ func enter(_previous_state: State, args) -> void:
 		selected_troops = args
 		used_positions = []
 		
-		# Ajustar o raio de dispersão com base no número de tropas
+		# Adjust the dispersion radius based on the number of troops
 		dispersion_radius = BASE_DISPERSION_RADIUS + (MAX_RADIUS_SCALING * selected_troops.size())
 	
 	# Generate random positions for each selected troop
 	for troop in selected_troops:
+		# Check if the troop is still valid
+		if not is_instance_valid(troop):
+			continue
+
 		var valid_position := false
 		var target_pos: Vector2
 
