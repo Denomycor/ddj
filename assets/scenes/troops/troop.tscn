@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://n8cohatmpk2b"]
+[gd_scene load_steps=15 format=3 uid="uid://n8cohatmpk2b"]
 
 [ext_resource type="Script" path="res://assets/scripts/troop.gd" id="1_2icef"]
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="2_pow76"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_yi441"]
 [ext_resource type="Texture2D" uid="uid://3t6dpy4h2r1s" path="res://assets/images/troop.png" id="6_fnbtx"]
 [ext_resource type="AudioStream" uid="uid://b2sb6ss4kkbo6" path="res://assets/audio/som-rifle.wav" id="7_ohj7b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7pjh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sedtw"]
 size = Vector2(45, 68)
@@ -55,6 +57,7 @@ _data = {
 }
 
 [node name="troop" type="CharacterBody2D" groups=["player_troops"]]
+material = SubResource("ShaderMaterial_7pjh3")
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_2icef")

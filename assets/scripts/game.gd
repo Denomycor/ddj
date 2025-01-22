@@ -24,8 +24,8 @@ func switch_from_level_to_main_menu(level: Node2D) -> void:
 	$main_menu.visible = true
 
 
-func _on_play_mouse_entered() -> void:
-	animation_player.play("shoot")
+#func _on_play_mouse_entered() -> void:
+#	animation_player.play("shoot")
 	
-func _on_quit_mouse_entered() -> void:
-	animation_player2.play("shoot")
+#func _on_quit_mouse_entered() -> void:
+#	animation_player2.play("shoot")
