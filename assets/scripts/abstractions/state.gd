@@ -43,4 +43,3 @@ func process(_delta: float) -> void:
 ## Propagated by state machine _input
 func input(_event: InputEvent) -> void:
 	pass
-

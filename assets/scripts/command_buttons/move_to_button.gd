@@ -31,4 +31,3 @@ func toggle_enabled(state: bool) -> void:
 	super.toggle_enabled(state)
 	waiting_on_pos = false
 	modulate = Color.WHITE
-

@@ -1,0 +1,130 @@
+[gd_scene load_steps=13 format=3 uid="uid://cvi3u4ffos2fs"]
+
+[ext_resource type="PackedScene" uid="uid://n8cohatmpk2b" path="res://assets/scenes/troops/troop.tscn" id="1_lm31w"]
+[ext_resource type="PackedScene" uid="uid://bune1a7rrsgdw" path="res://assets/scenes/enemies/enemy_rusher.tscn" id="2_ui34s"]
+[ext_resource type="Script" path="res://assets/scripts/selection_rect.gd" id="3_mw2rs"]
+[ext_resource type="Script" path="res://assets/scripts/command_buttons/move_to_button.gd" id="4_a6ie6"]
+[ext_resource type="Script" path="res://assets/scripts/command_buttons/command_button.gd" id="5_seiyv"]
+[ext_resource type="Script" path="res://assets/scripts/pause_menu.gd" id="6_ulip5"]
+[ext_resource type="Script" path="res://assets/scripts/command_buttons/disperse_button.gd" id="6_yetn4"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wl66o"]
+vertices = PackedVector2Array(1142, 638, 10, 638, 10, 10, 1142, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 648, 1152, 648, 1152, 0)])
+
+[sub_resource type="InputEventKey" id="InputEventKey_scow5"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_35cec"]
+events = [SubResource("InputEventKey_scow5")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_wesjk"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_vt280"]
+events = [SubResource("InputEventKey_wesjk")]
+
+[node name="test_level" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_wl66o")
+
+[node name="troop" parent="." instance=ExtResource("1_lm31w")]
+position = Vector2(552, 328)
+
+[node name="troop2" parent="." instance=ExtResource("1_lm31w")]
+position = Vector2(344, 343)
+
+[node name="troop3" parent="." instance=ExtResource("1_lm31w")]
+position = Vector2(767, 149)
+
+[node name="troop4" parent="." instance=ExtResource("1_lm31w")]
+position = Vector2(536, 280)
+
+[node name="enemy_rusher" parent="." instance=ExtResource("2_ui34s")]
+position = Vector2(232, 184)
+
+[node name="selection_rect" type="CanvasLayer" parent="."]
+script = ExtResource("3_mw2rs")
+
+[node name="Panel" type="Panel" parent="selection_rect"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+alignment = 1
+
+[node name="move_to" type="Button" parent="UI/HBoxContainer"]
+visible = false
+layout_mode = 2
+shortcut = SubResource("Shortcut_35cec")
+text = "Move to (1)"
+script = ExtResource("4_a6ie6")
+
+[node name="no_command" type="Button" parent="UI/HBoxContainer"]
+visible = false
+layout_mode = 2
+shortcut = SubResource("Shortcut_vt280")
+text = "Idle (2)"
+script = ExtResource("5_seiyv")
+
+[node name="disperse" type="Button" parent="UI/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Disperse (3)"
+script = ExtResource("6_yetn4")
+
+[node name="pause_menu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("6_ulip5")
+
+[node name="Panel" type="Panel" parent="pause_menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="pause_menu/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="resume" type="Button" parent="pause_menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Resume"
+
+[node name="quit" type="Button" parent="pause_menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Quit"
