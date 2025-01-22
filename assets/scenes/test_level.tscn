@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvi3u4ffos2fs"]
+[gd_scene load_steps=18 format=3 uid="uid://cvi3u4ffos2fs"]
 
+[ext_resource type="Script" path="res://assets/scripts/test_level.gd" id="1_6janv"]
 [ext_resource type="Texture2D" uid="uid://j16p3k3v5adl" path="res://assets/scenes/jawbreaker_sample.png" id="1_bd52f"]
 [ext_resource type="PackedScene" uid="uid://n8cohatmpk2b" path="res://assets/scenes/troops/troop.tscn" id="1_lm31w"]
 [ext_resource type="PackedScene" uid="uid://bune1a7rrsgdw" path="res://assets/scenes/enemies/enemy_rusher.tscn" id="2_ui34s"]
@@ -286,6 +287,7 @@ unicode = 50
 events = [SubResource("InputEventKey_wesjk")]
 
 [node name="test_level" type="Node2D"]
+script = ExtResource("1_6janv")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 scale = Vector2(1.32343, 1.17658)
@@ -395,5 +397,69 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Quit"
+
+[node name="game_over" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="Panel" type="Panel" parent="game_over"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="game_over"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="game_over/VBoxContainer"]
+layout_mode = 2
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quit" type="Button" parent="game_over/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "quit
+"
+
+[node name="mission_acomplished" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="Panel" type="Panel" parent="mission_acomplished"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mission_acomplished"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="mission_acomplished/VBoxContainer"]
+layout_mode = 2
+text = "Mission Acomplished!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quit" type="Button" parent="mission_acomplished/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "quit
+"
 
 [editable path="troop"]
