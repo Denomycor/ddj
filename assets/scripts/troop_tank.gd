@@ -14,6 +14,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 func _ready() -> void:
+	hitbox_component.died.connect(queue_free)
 	projectile_spawner_component.shoot_projectile.connect(func(from: Vector2, rot: float, _data: Variant):
 		#animação de disparo
 		animation_player.play("shoot")

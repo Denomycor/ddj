@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dy8rsm0kfaoox"]
+[gd_scene load_steps=14 format=3 uid="uid://dy8rsm0kfaoox"]
 
 [ext_resource type="Script" path="res://assets/scripts/game.gd" id="1_5y50h"]
 [ext_resource type="Texture2D" uid="uid://3t6dpy4h2r1s" path="res://assets/images/troop.png" id="3_nogq8"]
@@ -18,42 +18,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_seqxo"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="Animation" id="Animation_dd1fe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/play/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_oxduq"]
-resource_name = "shoot"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/play/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gcgfi"]
-_data = {
-"RESET": SubResource("Animation_dd1fe"),
-"shoot": SubResource("Animation_oxduq")
-}
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b311q"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -66,6 +30,10 @@ bg_color = Color(0.6, 0.6, 0.6, 0.00392157)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osj8r"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfy7r"]
+atlas = ExtResource("3_nogq8")
+region = Rect2(0, 0, 111.4, 98.4)
+
 [node name="game" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -74,13 +42,17 @@ script = ExtResource("1_5y50h")
 [node name="main_menu" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="main_menu"]
-offset_right = 1150.0
-offset_bottom = 650.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0.145098, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="main_menu/ColorRect"]
 material = SubResource("CanvasItemMaterial_8mmhl")
 position = Vector2(581, -9)
+emitting = false
 amount = 500
 lifetime = 10.0
 one_shot = true
@@ -140,19 +112,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_seqxo")
 text = "Play"
 icon_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="main_menu/VBoxContainer/play"]
-position = Vector2(476, -31)
-rotation = -1.83434
-scale = Vector2(4.74, 4.74)
-texture = ExtResource("3_nogq8")
-hframes = 6
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="main_menu/VBoxContainer/play/Sprite2D"]
-root_node = NodePath("../../../..")
-libraries = {
-"": SubResource("AnimationLibrary_gcgfi")
-}
-
 [node name="quit" type="Button" parent="main_menu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -170,18 +129,22 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_tmvcw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_osj8r")
 text = "Quit"
 
-[node name="Sprite2D" type="Sprite2D" parent="main_menu/VBoxContainer/quit"]
-position = Vector2(476, -31)
-rotation = -1.83434
-scale = Vector2(4.74, 4.74)
-texture = ExtResource("3_nogq8")
-hframes = 6
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="main_menu/VBoxContainer/quit/Sprite2D"]
-root_node = NodePath("../../../..")
-libraries = {
-"": SubResource("AnimationLibrary_gcgfi")
-}
+[node name="TextureRect" type="TextureRect" parent="main_menu"]
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = 79.9999
+offset_right = -57.0
+offset_bottom = 178.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.78387
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_cfy7r")
 
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/play" to="." method="_on_play_mouse_entered"]
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/quit" to="." method="_on_quit_mouse_entered"]
