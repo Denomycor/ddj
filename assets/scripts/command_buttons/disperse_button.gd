@@ -3,8 +3,8 @@ class_name DisperseButton extends CommandButton
 func _ready() -> void:
 	pressed.connect(func():
 		for_command_component(func(command_component):
-			var selected_troops = selection_rect.selected_troops  # Obtém as tropas selecionadas
-			command_component.command_state_machine.external_transition("disperse", selected_troops)  # Transição de estado com tropas como argumento
+			var selected_troops = selection_rect.selected_troops  # Get the selected troops
+			command_component.command_state_machine.external_transition("disperse", selected_troops)  # Transition state with troops as argument
 		)
 	)
 

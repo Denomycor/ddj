@@ -10,6 +10,7 @@ var designation := "ranger"
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var perception_component: PerceptionComponent = $PerceptionComponent
 @onready var projectile_spawner_component: ProjectileSpawnerComponent = $ProjectileSpawnerComponent
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D  # Reference to NavigationAgent2D
 
 var target_pos: Vector2 = Vector2.ZERO  # Default position for dispersal
 var is_dispersing: bool = false  # Whether the troop is currently dispersing
@@ -25,10 +26,6 @@ func _ready() -> void:
 	)
 
 func _process(_delta: float) -> void:
-	# If dispersing, move toward the target position
-	if is_dispersing:
-		_move_towards_target(_delta)
-
 	# Continue attacking logic if there's a target
 	var target := perception_component.get_closest_target()
 	if target:
@@ -36,17 +33,20 @@ func _process(_delta: float) -> void:
 
 # Function to set a new target position for dispersion
 func disperse_to(random_pos: Vector2) -> void:
+	print("Dispersing to:", random_pos)  # Debugging output to confirm target
 	target_pos = random_pos
 	is_dispersing = true
+	navigation_agent.target_position = target_pos  # Use the navigation agent to set the target
 
-# Internal function to handle movement toward the target position
-func _move_towards_target(delta: float) -> void:
-	if not is_dispersing:
-		return
-	
-	var direction = (target_pos - global_position).normalized()
-	position += direction * speed * delta
+func _physics_process(delta: float) -> void:
+	# Update movement based on NavigationAgent2D
+	if is_dispersing and navigation_agent.is_target_reached() == false:
+		var velocity = navigation_agent.get_next_path_position() - global_position
+		velocity = velocity.normalized() * speed
+		position += velocity * delta
 
-	# Check if the troop has reached the target position
-	if global_position.distance_to(target_pos) <= disperse_aprox_distance:
-		is_dispersing = false  # Stop dispersing once the target position is reached
+	# Check if the troop has reached the target
+	if is_dispersing and navigation_agent.is_target_reached():
+		print("Reached target position:", global_position)
+		is_dispersing = false  # Stop dispersing
+		navigation_agent.target_position = global_position  # Clear the target

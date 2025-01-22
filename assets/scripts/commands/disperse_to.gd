@@ -27,7 +27,7 @@ func enter(_previous_state: State, args) -> void:
 		while not valid_position:
 			# Generate a random offset and calculate the target position
 			var random_offset = Vector2(
-				randf_range(-dispersion_radius, dispersion_radius), 
+				randf_range(-dispersion_radius, dispersion_radius),
 				randf_range(-dispersion_radius, dispersion_radius)
 			)
 			target_pos = troop.global_position + random_offset
@@ -39,11 +39,12 @@ func enter(_previous_state: State, args) -> void:
 					valid_position = false
 					break
 
-		# Assign the position to the troop and store it in used_positions
+		# Assign the target position to the troop using NavigationAgent2D
 		troop.disperse_to(target_pos)
 		used_positions.append(target_pos)
 
 	leave_command()
+
 
 func leave_command() -> void:
 	state_machine.transition(self, "no_command")
