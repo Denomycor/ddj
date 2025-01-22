@@ -16,8 +16,9 @@ size = Vector2(16, 16)
 radius = 80.0
 
 [node name="troop" type="CharacterBody2D" groups=["player_troops"]]
-collision_mask = 3
+collision_mask = 19
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_2icef")
 
 [node name="Label" type="Label" parent="."]
@@ -63,3 +64,5 @@ fire_delay = 1.0
 multishot = 1
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_use_custom = true
