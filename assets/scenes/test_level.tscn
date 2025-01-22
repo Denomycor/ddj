@@ -39,6 +39,7 @@ navigation_polygon = SubResource("NavigationPolygon_wl66o")
 
 [node name="enemy_rusher" parent="." instance=ExtResource("2_ui34s")]
 position = Vector2(132, 96)
+speed = 100
 
 [node name="TroopTank" parent="." instance=ExtResource("3_v7q1a")]
 position = Vector2(151, 485)
