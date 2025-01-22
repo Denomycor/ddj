@@ -1,8 +1,8 @@
 class_name Game extends Node
 
 const TEST_LEVEL := preload("res://assets/scenes/test_level.tscn")
-@onready var animation_player = $main_menu/VBoxContainer/play/Sprite2D/AnimationPlayer  # Caminho para o AnimationPlayer
-@onready var animation_player2 = $main_menu/VBoxContainer/quit/Sprite2D/AnimationPlayer  # Caminho para o AnimationPlayer
+@onready var animation_player = $main_menu/VBoxContainer/AnimationPlayer  # Caminho para o AnimationPlayer
+@onready var animation_player2 = $main_menu/VBoxContainer/AnimationPlayer  # Caminho para o AnimationPlayer
 
 
 func _ready() -> void:
@@ -24,8 +24,8 @@ func switch_from_level_to_main_menu(level: Node2D) -> void:
 	$main_menu.visible = true
 
 
-#func _on_play_mouse_entered() -> void:
-#	animation_player.play("shoot")
+func _on_play_mouse_entered() -> void:
+	animation_player.play("shoot")
 	
-#func _on_quit_mouse_entered() -> void:
-#	animation_player2.play("shoot")
+func _on_quit_mouse_entered() -> void:
+	animation_player2.play("shoot")

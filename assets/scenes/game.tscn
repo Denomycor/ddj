@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dy8rsm0kfaoox"]
+[gd_scene load_steps=16 format=3 uid="uid://dy8rsm0kfaoox"]
 
 [ext_resource type="Script" path="res://assets/scripts/game.gd" id="1_5y50h"]
 [ext_resource type="Texture2D" uid="uid://3t6dpy4h2r1s" path="res://assets/images/troop.png" id="3_nogq8"]
@@ -30,9 +30,43 @@ bg_color = Color(0.6, 0.6, 0.6, 0.00392157)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osj8r"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cfy7r"]
-atlas = ExtResource("3_nogq8")
-region = Rect2(0, 0, 111.4, 98.4)
+[sub_resource type="Animation" id="Animation_4aidy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6jcab"]
+resource_name = "shoot"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0569364, 0.116581, 0.176226, 0.235212, 0.29698),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 4, 5, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oyxal"]
+_data = {
+"RESET": SubResource("Animation_4aidy"),
+"shoot": SubResource("Animation_6jcab")
+}
 
 [node name="game" type="Control"]
 layout_mode = 3
@@ -52,7 +86,6 @@ color = Color(0, 0, 0.145098, 1)
 [node name="CPUParticles2D" type="CPUParticles2D" parent="main_menu/ColorRect"]
 material = SubResource("CanvasItemMaterial_8mmhl")
 position = Vector2(581, -9)
-emitting = false
 amount = 500
 lifetime = 10.0
 one_shot = true
@@ -129,22 +162,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_tmvcw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_osj8r")
 text = "Quit"
 
-[node name="TextureRect" type="TextureRect" parent="main_menu"]
-texture_filter = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -168.0
-offset_top = 79.9999
-offset_right = -57.0
-offset_bottom = 178.0
-grow_horizontal = 0
-grow_vertical = 0
-rotation = 3.78387
-scale = Vector2(4, 4)
-texture = SubResource("AtlasTexture_cfy7r")
+[node name="Sprite2D" type="Sprite2D" parent="main_menu/VBoxContainer"]
+position = Vector2(450, 20)
+rotation = -1.74358
+scale = Vector2(3.70209, 3.70209)
+texture = ExtResource("3_nogq8")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="main_menu/VBoxContainer"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_oyxal")
+}
 
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/play" to="." method="_on_play_mouse_entered"]
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/quit" to="." method="_on_quit_mouse_entered"]
