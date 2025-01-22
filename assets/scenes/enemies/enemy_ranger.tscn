@@ -1,11 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddcbuf48u5jbs"]
+[gd_scene load_steps=9 format=3 uid="uid://ddcbuf48u5jbs"]
 
 [ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="1_na4if"]
 [ext_resource type="Script" path="res://assets/scripts/enemy_ranger.gd" id="2_jolyd"]
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="3_r424m"]
+[ext_resource type="Texture2D" uid="uid://dburbct3g8whb" path="res://assets/images/enemy-ranger.png" id="4_22ehd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jw5no"]
 radius = 144.0
+
+[sub_resource type="Animation" id="Animation_7om7n"]
+resource_name = "shoot"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_dq1ua"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_je25k"]
+_data = {
+"RESET": SubResource("Animation_dq1ua"),
+"shoot": SubResource("Animation_7om7n")
+}
 
 [node name="enemy_ranger" instance=ExtResource("1_na4if")]
 script = ExtResource("2_jolyd")
@@ -13,13 +51,30 @@ script = ExtResource("2_jolyd")
 [node name="Label" parent="." index="0"]
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(1, 0.5)
+
+[node name="CollisionShape2D" parent="HitboxComponent" index="0"]
+position = Vector2(0.5, 0.5)
+
 [node name="CollisionShape2D" parent="attack_range" index="0"]
 shape = SubResource("CircleShape2D_jw5no")
 
 [node name="NavigationAgent2D" parent="." index="6"]
 target_desired_distance = 130.0
 
-[node name="ProjectileSpawnerComponent" type="Node2D" parent="." index="8"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+"": SubResource("AnimationLibrary_je25k")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="9"]
+texture = ExtResource("4_22ehd")
+offset = Vector2(50, 0)
+hframes = 8
+
+[node name="ProjectileSpawnerComponent" type="Node2D" parent="Sprite2D" index="0"]
+position = Vector2(54, 16)
 script = ExtResource("3_r424m")
 fire_delay = 1.0
 multishot = 1

@@ -1,6 +1,5 @@
 class_name Projectile extends CharacterBody2D
 
-
 @export var speed := 20
 @export var max_range := 10000
 @export var damage := 1
@@ -8,11 +7,11 @@ class_name Projectile extends CharacterBody2D
 var distance_acc := 0.0
 var locked := true
 
-
 func _ready() -> void:
 	$Area2D.area_entered.connect(func(area: Area2D):
 		if(area is HitboxComponent):
 			area.deal_damage(damage)
+			print("damage -> ",damage)
 			destroy()
 		else:
 			print("Non-Hitbox Area Detected:", area)
