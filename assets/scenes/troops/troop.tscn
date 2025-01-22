@@ -1,39 +1,81 @@
-[gd_scene load_steps=9 format=3 uid="uid://n8cohatmpk2b"]
+[gd_scene load_steps=14 format=3 uid="uid://n8cohatmpk2b"]
 
 [ext_resource type="Script" path="res://assets/scripts/troop.gd" id="1_2icef"]
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="2_pow76"]
 [ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="3_dxdlw"]
 [ext_resource type="Script" path="res://assets/scripts/components/hitbox_component.gd" id="3_ubuao"]
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_yi441"]
+[ext_resource type="Texture2D" uid="uid://3t6dpy4h2r1s" path="res://assets/images/troop.png" id="6_fnbtx"]
+[ext_resource type="AudioStream" uid="uid://b2sb6ss4kkbo6" path="res://assets/audio/som-rifle.wav" id="7_ohj7b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sedtw"]
-size = Vector2(8, 8)
+size = Vector2(45, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xost1"]
-size = Vector2(16, 16)
+size = Vector2(45, 68)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbujc"]
 radius = 80.0
 
+[sub_resource type="Animation" id="Animation_87m6c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qcplp"]
+resource_name = "shoot"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtxrf"]
+_data = {
+"RESET": SubResource("Animation_87m6c"),
+"shoot": SubResource("Animation_qcplp")
+}
+
 [node name="troop" type="CharacterBody2D" groups=["player_troops"]]
-collision_mask = 19
+collision_mask = 3
 motion_mode = 1
-wall_min_slide_angle = 0.0
 script = ExtResource("1_2icef")
+shoot_sfx = ExtResource("7_ohj7b")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -64.0
 offset_top = -32.0
 offset_right = 64.0
 offset_bottom = -9.0
-text = "test"
+text = "troop basico"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-2.5, -1)
 shape = SubResource("RectangleShape2D_sedtw")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 
 [node name="CommandComponent" type="Node" parent="."]
@@ -46,6 +88,7 @@ monitoring = false
 script = ExtResource("3_ubuao")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-2.5, -1)
 shape = SubResource("RectangleShape2D_xost1")
 
 [node name="PerceptionComponent" type="Area2D" parent="."]
@@ -55,14 +98,29 @@ monitorable = false
 script = ExtResource("3_dxdlw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionComponent"]
+visible = false
 shape = SubResource("CircleShape2D_kbujc")
 
-[node name="ProjectileSpawnerComponent" type="Node2D" parent="."]
-position = Vector2(8, 0)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("6_fnbtx")
+offset = Vector2(30, 0)
+hframes = 6
+
+[node name="ProjectileSpawnerComponent" type="Node2D" parent="Sprite2D"]
+position = Vector2(53, 14)
 script = ExtResource("5_yi441")
 fire_delay = 1.0
 multishot = 1
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
-debug_use_custom = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rtxrf")
+}
+
+[node name="shoot_sfx" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_ohj7b")
+volume_db = 24.0
+bus = &"SFX"
+
+[node name="SfxPlayer" type="AudioStreamPlayer2D" parent="."]
