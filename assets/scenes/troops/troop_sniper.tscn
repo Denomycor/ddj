@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b788vuq587th7"]
+[gd_scene load_steps=16 format=3 uid="uid://b788vuq587th7"]
 
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="1_numxf"]
 [ext_resource type="Script" path="res://assets/scripts/troop_sniper.gd" id="1_ptpsf"]
 [ext_resource type="Script" path="res://assets/scripts/components/hitbox_component.gd" id="3_81rlf"]
 [ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="3_xsh2q"]
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_u6pe2"]
+[ext_resource type="Shader" path="res://assets/scenes/troops/troop.gdshader" id="6_c6nbn"]
 [ext_resource type="Texture2D" uid="uid://1m3x0qqnjse2" path="res://assets/images/sniper.png" id="6_nekcq"]
 [ext_resource type="AudioStream" uid="uid://dg6w5iowiwcit" path="res://assets/audio/som-sniper.wav" id="7_2qwrv"]
 
@@ -16,6 +17,11 @@ size = Vector2(94, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ni87"]
 radius = 348.013
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x6y5w"]
+shader = ExtResource("6_c6nbn")
+shader_parameter/outline_color = Vector4(0, 0, 1, 1)
+shader_parameter/outline_thickness = 2.0
 
 [sub_resource type="Animation" id="Animation_2tt7m"]
 length = 0.001
@@ -99,6 +105,7 @@ shape = SubResource("CircleShape2D_4ni87")
 debug_color = Color(0, 0.6, 0.701961, 0.498039)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_x6y5w")
 rotation = -6.28319
 texture = ExtResource("6_nekcq")
 offset = Vector2(50, 0)

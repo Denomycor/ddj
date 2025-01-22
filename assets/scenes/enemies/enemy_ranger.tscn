@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddcbuf48u5jbs"]
+[gd_scene load_steps=11 format=3 uid="uid://ddcbuf48u5jbs"]
 
 [ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="1_na4if"]
 [ext_resource type="Script" path="res://assets/scripts/enemy_ranger.gd" id="2_jolyd"]
+[ext_resource type="Shader" path="res://assets/scenes/enemies/enemy.gdshader" id="3_1ptbr"]
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="3_r424m"]
 [ext_resource type="Texture2D" uid="uid://dburbct3g8whb" path="res://assets/images/enemy-ranger.png" id="4_22ehd"]
 
@@ -45,6 +46,11 @@ _data = {
 "shoot": SubResource("Animation_7om7n")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hd12d"]
+shader = ExtResource("3_1ptbr")
+shader_parameter/outline_color = Vector4(1, 0, 0, 1)
+shader_parameter/outline_thickness = 2.0
+
 [node name="enemy_ranger" instance=ExtResource("1_na4if")]
 script = ExtResource("2_jolyd")
 
@@ -72,6 +78,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="9"]
+material = SubResource("ShaderMaterial_hd12d")
 texture = ExtResource("4_22ehd")
 offset = Vector2(50, 0)
 hframes = 8

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dcx535yy3ub28"]
+[gd_scene load_steps=16 format=3 uid="uid://dcx535yy3ub28"]
 
 [ext_resource type="Script" path="res://assets/scripts/troop_tank.gd" id="1_nhw18"]
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="2_wayhf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="4_nahql"]
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_t7q8l"]
 [ext_resource type="Texture2D" uid="uid://2ajqh0fldyax" path="res://assets/images/tank.png" id="6_5wky4"]
+[ext_resource type="Shader" path="res://assets/scenes/troops/troop.gdshader" id="6_cfxg8"]
 [ext_resource type="AudioStream" uid="uid://bj3j3urpj5drx" path="res://assets/audio/animals_bear_growl_001.mp3" id="7_unk2q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1wx"]
@@ -16,6 +17,11 @@ size = Vector2(54.8199, 86.945)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ni87"]
 radius = 438.688
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3dyq"]
+shader = ExtResource("6_cfxg8")
+shader_parameter/outline_color = Vector4(0, 0, 1, 1)
+shader_parameter/outline_thickness = 2.0
 
 [sub_resource type="Animation" id="Animation_21rxp"]
 length = 0.001
@@ -93,6 +99,7 @@ scale = Vector2(0.137701, 0.137557)
 shape = SubResource("CircleShape2D_4ni87")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_q3dyq")
 position = Vector2(1, 0)
 texture = ExtResource("6_5wky4")
 offset = Vector2(50, 0)

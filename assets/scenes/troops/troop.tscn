@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://n8cohatmpk2b"]
+[gd_scene load_steps=16 format=3 uid="uid://n8cohatmpk2b"]
 
 [ext_resource type="Script" path="res://assets/scripts/troop.gd" id="1_2icef"]
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="2_pow76"]
 [ext_resource type="Script" path="res://assets/scripts/components/perception_component.gd" id="3_dxdlw"]
 [ext_resource type="Script" path="res://assets/scripts/components/hitbox_component.gd" id="3_ubuao"]
 [ext_resource type="Script" path="res://assets/scripts/components/projectile_spawner_component.gd" id="5_yi441"]
+[ext_resource type="Shader" path="res://assets/scenes/troops/troop.gdshader" id="6_fj2fo"]
 [ext_resource type="Texture2D" uid="uid://3t6dpy4h2r1s" path="res://assets/images/troop.png" id="6_fnbtx"]
 [ext_resource type="AudioStream" uid="uid://b2sb6ss4kkbo6" path="res://assets/audio/som-rifle.wav" id="7_ohj7b"]
 
@@ -16,6 +17,11 @@ size = Vector2(45, 68)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbujc"]
 radius = 80.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16lk2"]
+shader = ExtResource("6_fj2fo")
+shader_parameter/outline_color = Vector4(0, 0, 1, 1)
+shader_parameter/outline_thickness = 5.0
 
 [sub_resource type="Animation" id="Animation_87m6c"]
 length = 0.001
@@ -102,6 +108,7 @@ visible = false
 shape = SubResource("CircleShape2D_kbujc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_16lk2")
 texture = ExtResource("6_fnbtx")
 offset = Vector2(30, 0)
 hframes = 6

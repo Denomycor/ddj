@@ -314,6 +314,7 @@ position = Vector2(536, 280)
 position = Vector2(232, 184)
 
 [node name="selection_rect" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("3_mw2rs")
 
 [node name="Panel" type="Panel" parent="selection_rect"]
