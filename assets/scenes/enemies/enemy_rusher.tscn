@@ -5,7 +5,22 @@
 [ext_resource type="Texture2D" uid="uid://drqw71w7jryjs" path="res://assets/images/enemy-rusher.png" id="3_80jxn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ma3y"]
-radius = 111.647
+radius = 163.077
+
+[sub_resource type="Animation" id="Animation_4nxdn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_2w1n1"]
 resource_name = "shoot"
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_4nxdn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fksoo"]
 _data = {
 "RESET": SubResource("Animation_4nxdn"),
@@ -46,6 +46,7 @@ _data = {
 
 [node name="enemy_rusher" instance=ExtResource("1_moaud")]
 script = ExtResource("2_27e2o")
+speed = 150
 
 [node name="Label" parent="." index="0"]
 visible = false
