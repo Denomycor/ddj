@@ -3,7 +3,7 @@ class_name MoveTo extends State
 const MAX_MOVE_TIME := 20
 
 var target_pos: Vector2
-var troop: Troop
+var troop: CharacterBody2D
 var nav_agent: NavigationAgent2D
 var tween: Tween
 
@@ -27,7 +27,7 @@ func enter(_previous_state: State, args) -> void:
 func physics_process(_delta: float) -> void:
 	if !nav_agent.is_navigation_finished():#novo
 		var next_point := nav_agent.get_next_path_position()#novo
-		var motion: Vector2 = troop.global_position.direction_to(next_point) * troop.speed#novo
+		var motion: Vector2 = troop.global_position.direction_to(next_point) * owner.speed#novo
 		_on_velocity_computed(motion)#novo
 	else:
 		leave_command()
