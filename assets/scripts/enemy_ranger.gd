@@ -44,7 +44,7 @@ func transition_ranger(state: State) -> void:
 	# Aproach the nearest enemy to attack
 	elif(!perception_component.enemies_in_range.is_empty()):
 		var nearest_target: Node2D = perception_component.get_closest_target()
-		
+		$Sprite2D.look_at(nearest_target.global_position)
 		state_machine.transition(state, "aproach", nearest_target)
 
 ### State overrides

@@ -48,7 +48,7 @@ class Chase2State extends ChaseState:
 
 	var attack_ready := true
 	const ATTACK_DELAY := 1
-	const ATTACK_DAMAGE := 5
+	const ATTACK_DAMAGE := 2
 
 	func leave_state() -> void:
 		state_machine.transition(self, "wait", 0.2)

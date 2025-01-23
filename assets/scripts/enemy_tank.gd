@@ -28,6 +28,7 @@ func transition_tank(state: State) -> void:
 	else:
 		var nearest_target: Node2D = perception_component.get_closest_target()
 		state_machine.transition(state, "chase", nearest_target)
+		$Sprite2D.look_at(nearest_target.global_position)
 
 
 ## Get the neareast ranger in range that has enemies nearby
