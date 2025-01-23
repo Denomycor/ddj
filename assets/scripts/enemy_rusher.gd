@@ -29,6 +29,7 @@ func transition_rusher(state: State) -> void:
 	# If no ranger is in range attack any troop
 	else:
 		var nearest_target: Node2D = perception_component.get_closest_target()
+		$Sprite2D.look_at(nearest_target.global_position)
 		state_machine.transition(state, "chase", nearest_target)
 
 
@@ -47,7 +48,7 @@ class Chase2State extends ChaseState:
 
 	var attack_ready := true
 	const ATTACK_DELAY := 1
-	const ATTACK_DAMAGE := 10
+	const ATTACK_DAMAGE := 5
 
 	func leave_state() -> void:
 		state_machine.transition(self, "wait", 0.2)

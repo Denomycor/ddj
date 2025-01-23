@@ -15,10 +15,10 @@ shader_parameter/outline_color = Vector4(0, 0, 1, 1)
 shader_parameter/outline_thickness = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1wx"]
-size = Vector2(48, 72)
+size = Vector2(70, 89)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idtss"]
-size = Vector2(54.8199, 86.945)
+size = Vector2(84.4958, 108.987)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ni87"]
 radius = 438.688
@@ -65,14 +65,14 @@ _data = {
 "shoot": SubResource("Animation_vauwb")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7es1k"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4w1x"]
 bg_color = Color(0.0687983, 0.0687983, 0.0687982, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8m4n"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfmgm"]
 bg_color = Color(0.50607, 0.662389, 0.233275, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -80,8 +80,8 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_0csfm"]
-ProgressBar/styles/background = SubResource("StyleBoxFlat_7es1k")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_f8m4n")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_d4w1x")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_bfmgm")
 
 [node name="TroopTank" type="CharacterBody2D" groups=["player_troops"]]
 material = SubResource("ShaderMaterial_2royf")
@@ -89,10 +89,11 @@ script = ExtResource("1_nhw18")
 bear_sfx = ExtResource("7_unk2q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 5)
+position = Vector2(12, 0.5)
 shape = SubResource("RectangleShape2D_yy1wx")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(0, 0.646135, 0.244857, 1)
 polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 
@@ -107,7 +108,7 @@ monitoring = false
 script = ExtResource("3_jp305")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-0.755301, 5.51059)
+position = Vector2(14.0826, 3.06144)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_idtss")
 
@@ -130,7 +131,7 @@ offset = Vector2(50, 0)
 hframes = 8
 
 [node name="ProjectileSpawnerComponent" type="Node2D" parent="Sprite2D"]
-position = Vector2(-12, -5)
+position = Vector2(-1, 0)
 script = ExtResource("5_t7q8l")
 fire_delay = 1.0
 multishot = 2
@@ -152,10 +153,10 @@ bus = &"SFX"
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="hp_bar" type="ProgressBar" parent="."]
-offset_left = -32.0
+offset_left = -22.0
 offset_top = -56.0
-offset_right = 32.0
-offset_bottom = -39.0
+offset_right = 42.0
+offset_bottom = -44.0
 theme = SubResource("Theme_0csfm")
 max_value = 1000.0
 step = 1.0

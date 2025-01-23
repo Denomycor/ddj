@@ -52,19 +52,20 @@ _data = {
 
 [node name="enemy_rusher" instance=ExtResource("1_moaud")]
 script = ExtResource("2_27e2o")
+speed = 150
 
 [node name="Label" parent="." index="0"]
 visible = false
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(18, -1.5)
+position = Vector2(20.5, 0)
 
 [node name="Polygon2D" parent="." index="2"]
 visible = false
 
 [node name="CollisionShape2D" parent="HitboxComponent" index="0"]
-position = Vector2(20, -0.5)
+position = Vector2(19.5, 0.5)
 
 [node name="CollisionShape2D" parent="attack_range" index="0"]
 shape = SubResource("CircleShape2D_8ma3y")
