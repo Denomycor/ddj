@@ -20,4 +20,3 @@ func _process(_delta: float) -> void:
 		get_tree().paused = true
 		game_ended = true
 		menu.get_node("VBoxContainer/quit").pressed.connect(level_quited.emit.bind(self))
-

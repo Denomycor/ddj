@@ -22,12 +22,14 @@ func _unhandled_input(event: InputEvent) -> void:
 func start_rect() -> void:
 	start_point = get_parent().get_global_mouse_position()
 	for t in selected_troops:
-		if(is_instance_valid(t)):
-			t.get_node("Polygon2D").color = Color.WHITE
+		if is_instance_valid(t):
+			var sprite = t.get_node("Sprite2D")
+			if sprite and sprite.material is ShaderMaterial:
+				var shader_material = sprite.material as ShaderMaterial
+				shader_material.set_shader_parameter("outline_color", Color(0, 0, 1))  # Resetar para azul
 	update_command_ui([])
 	selected_troops = []
 	is_selecting = true
-
 
 func end_rect() -> void:
 	is_selecting = false
@@ -39,21 +41,36 @@ func update_rect() -> void:
 	end_point = get_parent().get_global_mouse_position()
 
 	var corner := start_point.min(end_point)
-	var size := (start_point-end_point).abs()
-
+	var size := (start_point - end_point).abs()
 	$Panel.global_position = corner
 	$Panel.size = size
 
 	var rect := Rect2(corner, size)
 
+	# Resetar as cores de outline
 	for t in selected_troops:
-		t.get_node("Polygon2D").color = Color.WHITE
+		var sprite = t.get_node("Sprite2D")
+		var shader_material = sprite.material as ShaderMaterial
+		if sprite and sprite.material is ShaderMaterial:
+			shader_material.set_shader_parameter("outline_color", Color(0, 0, 1))  # Azul padrão
+
+	# Atualizar tropas selecionadas
 	selected_troops = get_tree().get_nodes_in_group("player_troops").filter(func(e):
 		return rect.has_point(e.global_position)
 	)
+
+	# Alterar a cor do outline para as tropas selecionadas
 	for t in selected_troops:
-		t.get_node("Polygon2D").color = Color.BLUE
-	
+		var sprite = t.get_node("Sprite2D")
+		if sprite and sprite.material is ShaderMaterial:
+			if sprite.material.resource_local_to_scene:  # Já é único
+				var shader_material = sprite.material as ShaderMaterial
+			else:  # Cria um material único
+				sprite.material = sprite.material.duplicate()
+				var shader_material = sprite.material as ShaderMaterial
+			var shader_material = sprite.material as ShaderMaterial
+			shader_material.set_shader_parameter("outline_color", Color(0.6, 0.8, 1.0))  # Azul claro
+
 	handle_selection()
 
 # TODO: temp
