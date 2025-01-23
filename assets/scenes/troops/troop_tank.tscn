@@ -98,6 +98,7 @@ polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 
 [node name="CommandComponent" type="Node" parent="."]
 script = ExtResource("2_wayhf")
+speed = 50
 aprox_distance = 22
 
 [node name="HitboxComponent" type="Area2D" parent="."]
@@ -105,6 +106,7 @@ scale = Vector2(0.816609, 0.816609)
 collision_layer = 2
 monitoring = false
 script = ExtResource("3_jp305")
+max_hp = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(-0.755301, 5.51059)

@@ -316,6 +316,7 @@ position = Vector2(536, 280)
 
 [node name="enemy_rusher" parent="." instance=ExtResource("2_ui34s")]
 position = Vector2(232, 184)
+speed = 100
 
 [node name="TroopTank" parent="." instance=ExtResource("4_06ktj")]
 position = Vector2(432, 456)

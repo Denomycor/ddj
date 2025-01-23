@@ -32,7 +32,7 @@ func _ready() -> void:
 		get_parent().add_child(instance)
 		instance.speed = 20
 		instance.max_range = 20000
-		instance.damage = 2
+		instance.damage = 3
 		instance.set_properties_and_start(from, rot)
 	)
 func _process(_delta: float) -> void:
