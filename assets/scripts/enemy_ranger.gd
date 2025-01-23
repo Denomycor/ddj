@@ -18,6 +18,7 @@ func _ready() -> void:
 		instance.set_collision_layer_value(4, true)
 		instance.get_node("Area2D").set_collision_layer_value(3, false)
 		instance.get_node("Area2D").set_collision_layer_value(4, true)
+
 		instance.get_node("Area2D").set_collision_mask_value(2, false)
 		instance.get_node("Area2D").set_collision_mask_value(1, true)
 		get_parent().add_child(instance)

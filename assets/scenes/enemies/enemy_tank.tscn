@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://83d83cpoajj6"]
+[gd_scene load_steps=14 format=3 uid="uid://83d83cpoajj6"]
 
 [ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="1_pgc4o"]
 [ext_resource type="Script" path="res://assets/scripts/enemy_tank.gd" id="2_lwg12"]
 [ext_resource type="Texture2D" uid="uid://7np3i81wr2pr" path="res://assets/images/enemy-tank.png" id="3_6lp3i"]
 [ext_resource type="Shader" path="res://assets/scenes/enemies/enemy.gdshader" id="3_hwj58"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ylan"]
+radius = 40.0
+height = 112.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xhhkb"]
 radius = 84.0119
@@ -50,13 +54,31 @@ _data = {
 "shoot": SubResource("Animation_bp7ac")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4w1x"]
+bg_color = Color(0.0687983, 0.0687983, 0.0687982, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfmgm"]
+bg_color = Color(0.50607, 0.662389, 0.233275, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_4vniu"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_d4w1x")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_bfmgm")
+
 [node name="enemy_tank" instance=ExtResource("1_pgc4o")]
 script = ExtResource("2_lwg12")
 speed = 50
 
 [node name="CollisionShape2D" parent="." index="1"]
-visible = false
-position = Vector2(18, 0)
+position = Vector2(7, 0)
+shape = SubResource("CapsuleShape2D_1ylan")
 
 [node name="Polygon2D" parent="." index="2"]
 visible = false
@@ -85,3 +107,14 @@ hframes = 13
 libraries = {
 "": SubResource("AnimationLibrary_o0fjd")
 }
+
+[node name="hp_bar" type="ProgressBar" parent="." index="11"]
+offset_left = -22.0
+offset_top = -56.0
+offset_right = 42.0
+offset_bottom = -44.0
+theme = SubResource("Theme_4vniu")
+max_value = 1000.0
+step = 1.0
+value = 500.0
+show_percentage = false

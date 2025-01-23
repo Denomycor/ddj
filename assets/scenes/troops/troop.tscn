@@ -22,7 +22,7 @@ height = 80.0
 radius = 34.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbujc"]
-radius = 80.0
+radius = 168.19
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ql3d4"]
 shader = ExtResource("1_2rag0")
