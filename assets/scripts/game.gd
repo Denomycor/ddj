@@ -2,6 +2,7 @@ class_name Game extends Node
 
 const TEST_LEVEL := preload("res://assets/scenes/test_level.tscn")
 @onready var animation_player = $main_menu/VBoxContainer/AnimationPlayer
+@onready var audio_player = $main_menu/AudioStreamPlayer2D
 
 func _ready() -> void:
 	$main_menu/VBoxContainer/play.pressed.connect(switch_from_main_menu_to_test_level)
@@ -10,6 +11,7 @@ func _ready() -> void:
 
 
 func switch_from_main_menu_to_test_level() -> void:
+	audio_player.stop() #para a music
 	var level := TEST_LEVEL.instantiate()
 	level.level_quited.connect(switch_from_level_to_main_menu)
 	$main_menu.visible = false
@@ -20,6 +22,7 @@ func switch_from_level_to_main_menu(level: Node2D) -> void:
 	level.queue_free()
 	get_tree().paused = false
 	$main_menu.visible = true
+	audio_player.play() #recomeça musica
 	
 func _on_play_mouse_entered() -> void:
 	animation_player.play("shoot")

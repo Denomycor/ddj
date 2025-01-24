@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dy8rsm0kfaoox"]
+[gd_scene load_steps=17 format=3 uid="uid://dy8rsm0kfaoox"]
 
 [ext_resource type="Script" path="res://assets/scripts/game.gd" id="1_5y50h"]
 [ext_resource type="Texture2D" uid="uid://3t6dpy4h2r1s" path="res://assets/images/troop.png" id="3_nogq8"]
+[ext_resource type="AudioStream" uid="uid://dffycbx4q71m3" path="res://assets/audio/musicabackground1.mp3" id="4_0b4xk"]
 [ext_resource type="FontFile" uid="uid://c5fmtjo1u6kfy" path="res://assets/fonts/Baskic8.otf" id="6_ebtu7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8mmhl"]
@@ -94,6 +95,7 @@ color = Color(0, 0, 0.145098, 1)
 [node name="CPUParticles2D" type="CPUParticles2D" parent="main_menu/ColorRect"]
 material = SubResource("CanvasItemMaterial_8mmhl")
 position = Vector2(581, -9)
+emitting = false
 amount = 500
 lifetime = 10.0
 one_shot = true
@@ -189,6 +191,12 @@ TIP
 Troops with a blue outline are yours, while those with a red outline belong to the enemy."
 editable = false
 scroll_fit_content_height = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="main_menu"]
+stream = ExtResource("4_0b4xk")
+volume_db = -30.276
+autoplay = true
+parameters/looping = true
 
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/play" to="." method="_on_play_mouse_entered"]
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/quit" to="." method="_on_quit_mouse_entered"]
