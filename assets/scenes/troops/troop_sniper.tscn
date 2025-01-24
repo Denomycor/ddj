@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b788vuq587th7"]
+[gd_scene load_steps=20 format=3 uid="uid://b788vuq587th7"]
 
 [ext_resource type="Shader" path="res://assets/scenes/troops/troop.gdshader" id="1_0h48l"]
 [ext_resource type="Script" path="res://assets/scripts/components/command_component.gd" id="1_numxf"]
@@ -14,14 +14,16 @@ shader = ExtResource("1_0h48l")
 shader_parameter/outline_color = Vector4(0, 0, 1, 1)
 shader_parameter/outline_thickness = 3.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1wx"]
-size = Vector2(126, 64)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bvj7i"]
+radius = 32.0
+height = 64.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_idtss"]
-size = Vector2(128, 64)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f047g"]
+radius = 32.0
+height = 92.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ni87"]
-radius = 348.013
+radius = 415.005
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0njk3"]
 shader = ExtResource("1_0h48l")
@@ -65,6 +67,24 @@ _data = {
 "shoot": SubResource("Animation_6rndy")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qko50"]
+bg_color = Color(0.0687983, 0.0687983, 0.0687982, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jna3"]
+bg_color = Color(0.50607, 0.662389, 0.233275, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_io2sr"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_qko50")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_3jna3")
+
 [node name="TroopSniper" type="CharacterBody2D" groups=["player_troops"]]
 material = SubResource("ShaderMaterial_eqfwo")
 script = ExtResource("1_ptpsf")
@@ -82,8 +102,8 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(29, 0)
-shape = SubResource("RectangleShape2D_yy1wx")
+position = Vector2(6, 0)
+shape = SubResource("CapsuleShape2D_bvj7i")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 visible = false
@@ -97,10 +117,12 @@ script = ExtResource("1_numxf")
 collision_layer = 2
 monitoring = false
 script = ExtResource("3_81rlf")
+max_hp = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(30, 0)
-shape = SubResource("RectangleShape2D_idtss")
+position = Vector2(18, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f047g")
 
 [node name="PerceptionComponent" type="Area2D" parent="."]
 collision_layer = 0
@@ -139,3 +161,14 @@ bus = &"SFX"
 [node name="SfxPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="hp_bar" type="ProgressBar" parent="."]
+offset_left = -22.0
+offset_top = -56.0
+offset_right = 42.0
+offset_bottom = -44.0
+theme = SubResource("Theme_io2sr")
+max_value = 1000.0
+step = 1.0
+value = 500.0
+show_percentage = false

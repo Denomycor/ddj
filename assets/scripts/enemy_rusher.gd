@@ -48,7 +48,7 @@ class Chase2State extends ChaseState:
 
 	var attack_ready := true
 	const ATTACK_DELAY := 1
-	const ATTACK_DAMAGE := 2
+	const ATTACK_DAMAGE := 70
 
 	func leave_state() -> void:
 		state_machine.transition(self, "wait", 0.2)
@@ -61,8 +61,10 @@ class Chase2State extends ChaseState:
 		# We move the entt here
 		super.physics_process(delta)
 		
+		
 		# attack
 		if(troop.attack_range_component.overlaps_body(target) && attack_ready):
+
 			target.get_node("HitboxComponent").deal_damage(ATTACK_DAMAGE)
 			attack_ready = false
 			var tween := troop.create_tween()

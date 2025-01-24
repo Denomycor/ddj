@@ -32,13 +32,13 @@ func _ready() -> void:
 		get_parent().add_child(instance)
 		instance.speed = 20
 		instance.max_range = 20000
-		instance.damage = 2
+		instance.damage = 50
 		instance.set_properties_and_start(from, rot)
 	)
 func _process(_delta: float) -> void:
 	var target := perception_component.get_closest_target()
 	if(target):
-		$Sprite2D.look_at(target.global_position)
+		look_at(target.global_position)
 		projectile_spawner_component.shoot(target.global_position)
 		
 func load_sfx(sfx):

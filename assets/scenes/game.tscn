@@ -75,6 +75,14 @@ script = ExtResource("1_5y50h")
 
 [node name="main_menu" type="CanvasLayer" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="main_menu"]
+z_index = 1
+position = Vector2(1596, 611)
+rotation = -2.16567
+scale = Vector2(5.201, 5.466)
+texture = ExtResource("3_nogq8")
+hframes = 6
+
 [node name="ColorRect" type="ColorRect" parent="main_menu"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,6 +94,7 @@ color = Color(0, 0, 0.145098, 1)
 [node name="CPUParticles2D" type="CPUParticles2D" parent="main_menu/ColorRect"]
 material = SubResource("CanvasItemMaterial_8mmhl")
 position = Vector2(581, -9)
+emitting = false
 amount = 500
 lifetime = 10.0
 one_shot = true
@@ -107,26 +116,22 @@ hue_variation_max = 1.0
 anim_speed_min = 49.47
 anim_speed_max = 93.09
 
-[node name="Title" type="Label" parent="main_menu"]
-offset_left = 269.0
-offset_top = 206.0
-offset_right = 934.0
-offset_bottom = 309.0
+[node name="VBoxContainer" type="VBoxContainer" parent="main_menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Title" type="Label" parent="main_menu/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("6_ebtu7")
 theme_override_font_sizes/font_size = 100
 text = "RobotRegiment"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="main_menu"]
-offset_left = 500.0
-offset_top = 350.0
-offset_right = 604.0
-offset_bottom = 500.0
-theme_override_constants/separation = 30
-alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="play" type="Button" parent="main_menu/VBoxContainer"]
 layout_mode = 2
@@ -142,7 +147,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_6a0mu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_khf07")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_srggg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_seqxo")
-text = "Play"
+text = "Play  "
 icon_alignment = 1
 
 [node name="quit" type="Button" parent="main_menu/VBoxContainer"]
@@ -160,20 +165,32 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_b311q")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w0y17")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tmvcw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_osj8r")
-text = "Quit"
-
-[node name="Sprite2D" type="Sprite2D" parent="main_menu/VBoxContainer"]
-position = Vector2(450, 20)
-rotation = -1.74358
-scale = Vector2(3.70209, 3.70209)
-texture = ExtResource("3_nogq8")
-hframes = 6
+text = "Quit  "
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="main_menu/VBoxContainer"]
-root_node = NodePath("../Sprite2D")
+root_node = NodePath("../../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_oyxal")
 }
+
+[node name="TextEdit" type="TextEdit" parent="main_menu"]
+custom_minimum_size = Vector2(800, 300)
+offset_left = 553.0
+offset_top = 718.0
+offset_right = 1353.0
+offset_bottom = 1023.0
+text = "Controls
+Mouse 2 - select troops
+
+Objective
+Command your troops and outsmart your enemies in this action-packed strategy game. 
+Plan your moves carefully to eliminate opposing forces and claim victory!
+
+TIP
+Troops with a blue outline are yours, while those with a red outline belong to the enemy.
+
+"
+scroll_fit_content_height = true
 
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/play" to="." method="_on_play_mouse_entered"]
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/quit" to="." method="_on_quit_mouse_entered"]

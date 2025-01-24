@@ -36,7 +36,7 @@ func _process(_delta: float) -> void:
 	# Continue attacking logic if there's a target
 	var target := perception_component.get_closest_target()
 	if(target):
-		$Sprite2D.look_at(target.global_position)
+		look_at(target.global_position)
 		projectile_spawner_component.shoot(target.global_position)
 
 func load_sfx(sfx):

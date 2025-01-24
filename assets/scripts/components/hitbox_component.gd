@@ -4,7 +4,7 @@ class_name HitboxComponent extends Area2D
 signal hit(value: float)
 signal died
 
-@export var max_hp := 100.0
+@export var max_hp := 1000.0
 
 var current_hp := max_hp
 
@@ -33,5 +33,4 @@ func deal_damage(value: float) -> void:
 	else:
 		current_hp = 0
 		hit.emit(value)
-		print("died")
 		died.emit()
