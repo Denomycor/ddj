@@ -77,9 +77,9 @@ script = ExtResource("1_5y50h")
 
 [node name="Sprite2D" type="Sprite2D" parent="main_menu"]
 z_index = 1
-position = Vector2(1411.63, 679.918)
-rotation = -1.74358
-scale = Vector2(3.20113, 3.36382)
+position = Vector2(1596, 611)
+rotation = -2.16567
+scale = Vector2(5.201, 5.466)
 texture = ExtResource("3_nogq8")
 hframes = 6
 
@@ -175,10 +175,10 @@ libraries = {
 
 [node name="TextEdit" type="TextEdit" parent="main_menu"]
 custom_minimum_size = Vector2(800, 300)
-offset_left = 729.0
-offset_top = 691.0
-offset_right = 1529.0
-offset_bottom = 996.0
+offset_left = 553.0
+offset_top = 718.0
+offset_right = 1353.0
+offset_bottom = 1023.0
 text = "Controls
 Mouse 2 - select troops
 
