@@ -75,6 +75,14 @@ script = ExtResource("1_5y50h")
 
 [node name="main_menu" type="CanvasLayer" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="main_menu"]
+z_index = 1
+position = Vector2(1411.63, 679.918)
+rotation = -1.74358
+scale = Vector2(3.20113, 3.36382)
+texture = ExtResource("3_nogq8")
+hframes = 6
+
 [node name="ColorRect" type="ColorRect" parent="main_menu"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,25 +116,22 @@ hue_variation_max = 1.0
 anim_speed_min = 49.47
 anim_speed_max = 93.09
 
-[node name="Title" type="Label" parent="main_menu"]
-offset_left = 793.0
-offset_top = 246.0
-offset_right = 1458.0
-offset_bottom = 349.0
+[node name="VBoxContainer" type="VBoxContainer" parent="main_menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Title" type="Label" parent="main_menu/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("6_ebtu7")
 theme_override_font_sizes/font_size = 100
 text = "RobotRegiment"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="main_menu"]
-offset_left = 1056.0
-offset_top = 538.0
-offset_right = 1160.0
-offset_bottom = 688.0
-theme_override_constants/separation = 30
-alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="play" type="Button" parent="main_menu/VBoxContainer"]
 layout_mode = 2
@@ -142,7 +147,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_6a0mu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_khf07")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_srggg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_seqxo")
-text = "Play"
+text = "Play  "
 icon_alignment = 1
 
 [node name="quit" type="Button" parent="main_menu/VBoxContainer"]
@@ -160,17 +165,10 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_b311q")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w0y17")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tmvcw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_osj8r")
-text = "Quit"
-
-[node name="Sprite2D" type="Sprite2D" parent="main_menu/VBoxContainer"]
-position = Vector2(674, -16)
-rotation = -1.74358
-scale = Vector2(5.702, 5.702)
-texture = ExtResource("3_nogq8")
-hframes = 6
+text = "Quit  "
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="main_menu/VBoxContainer"]
-root_node = NodePath("../Sprite2D")
+root_node = NodePath("../../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_oyxal")
 }

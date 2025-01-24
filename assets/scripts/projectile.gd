@@ -2,7 +2,7 @@ class_name Projectile extends CharacterBody2D
 
 @export var speed := 20
 @export var max_range := 10000
-@export var damage := 1
+@export var damage := 40
 
 var distance_acc := 0.0
 var locked := true
