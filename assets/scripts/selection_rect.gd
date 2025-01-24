@@ -59,17 +59,16 @@ func update_rect() -> void:
 		return rect.has_point(e.global_position)
 	)
 
-	# Alterar a cor do outline para as tropas selecionadas
+	#Alterar a cor do outline para as troops q tao selecionadas
 	for t in selected_troops:
 		var sprite = t.get_node("Sprite2D")
 		if sprite and sprite.material is ShaderMaterial:
-			if sprite.material.resource_local_to_scene:  # Já é único
+			if sprite.material.resource_local_to_scene:
 				var shader_material = sprite.material as ShaderMaterial
-			else:  # Cria um material único
+			else:  #cria um material shader único
 				sprite.material = sprite.material.duplicate()
-				var shader_material = sprite.material as ShaderMaterial
 			var shader_material = sprite.material as ShaderMaterial
-			shader_material.set_shader_parameter("outline_color", Color(0.6, 0.8, 1.0))  # Azul claro
+			shader_material.set_shader_parameter("outline_color", Color(0, 0.8, 0)) #verde
 
 	handle_selection()
 
