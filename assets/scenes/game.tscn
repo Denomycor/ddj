@@ -94,7 +94,6 @@ color = Color(0, 0, 0.145098, 1)
 [node name="CPUParticles2D" type="CPUParticles2D" parent="main_menu/ColorRect"]
 material = SubResource("CanvasItemMaterial_8mmhl")
 position = Vector2(581, -9)
-emitting = false
 amount = 500
 lifetime = 10.0
 one_shot = true
@@ -187,9 +186,8 @@ Command your troops and outsmart your enemies in this action-packed strategy gam
 Plan your moves carefully to eliminate opposing forces and claim victory!
 
 TIP
-Troops with a blue outline are yours, while those with a red outline belong to the enemy.
-
-"
+Troops with a blue outline are yours, while those with a red outline belong to the enemy."
+editable = false
 scroll_fit_content_height = true
 
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/play" to="." method="_on_play_mouse_entered"]
