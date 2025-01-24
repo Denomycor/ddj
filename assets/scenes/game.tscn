@@ -175,5 +175,24 @@ libraries = {
 "": SubResource("AnimationLibrary_oyxal")
 }
 
+[node name="TextEdit" type="TextEdit" parent="main_menu"]
+custom_minimum_size = Vector2(800, 300)
+offset_left = 729.0
+offset_top = 691.0
+offset_right = 1529.0
+offset_bottom = 996.0
+text = "Controls
+Mouse 2 - select troops
+
+Objective
+Command your troops and outsmart your enemies in this action-packed strategy game. 
+Plan your moves carefully to eliminate opposing forces and claim victory!
+
+TIP
+Troops with a blue outline are yours, while those with a red outline belong to the enemy.
+
+"
+scroll_fit_content_height = true
+
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/play" to="." method="_on_play_mouse_entered"]
 [connection signal="mouse_entered" from="main_menu/VBoxContainer/quit" to="." method="_on_quit_mouse_entered"]
