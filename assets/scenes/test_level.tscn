@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvi3u4ffos2fs"]
+[gd_scene load_steps=21 format=3 uid="uid://cvi3u4ffos2fs"]
 
 [ext_resource type="Script" path="res://assets/scripts/test_level.gd" id="1_6janv"]
 [ext_resource type="Texture2D" uid="uid://j16p3k3v5adl" path="res://assets/scenes/jawbreaker_sample.png" id="1_bd52f"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://assets/scripts/command_buttons/disperse_button.gd" id="6_yetn4"]
 [ext_resource type="PackedScene" uid="uid://b788vuq587th7" path="res://assets/scenes/troops/troop_sniper.tscn" id="9_26hm0"]
 [ext_resource type="PackedScene" uid="uid://83d83cpoajj6" path="res://assets/scenes/enemies/enemy_tank.tscn" id="11_4he14"]
+[ext_resource type="PackedScene" uid="uid://bune1a7rrsgdw" path="res://assets/scenes/enemies/enemy_rusher.tscn" id="12_nwyww"]
+[ext_resource type="PackedScene" uid="uid://ddcbuf48u5jbs" path="res://assets/scenes/enemies/enemy_ranger.tscn" id="13_f6ub7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wl66o"]
 vertices = PackedVector2Array(302, 806, 154, 250, 926, 226, 1042, 226, 418, 806, 1378, 490, 1718, 10, 1718, 950, 1378, 518, 1378, 374, 1042, 158, 1214, 374, 1378, 610, 562, 950, 1310, 610, 1282, 610, 1214, 610, 562, 806, 518, 850, 518, 950, 490, 922, 490, 878, 446, 850, 446, 878, 346, 950, 446, 922, 418, 922, 374, 922, 346, 850, 374, 878, 418, 850, 418, 878, 1042, 130, 1042, 62, 154, 10, 950, 62, 154, 178, 806, 62, 806, 226, 154, 206, 154, 110, 950, 106, 998, 106, 998, 130, 898, 182, 922, 106, 998, 158, 926, 182, 922, 62, 154, 82, 110, 82, 110, 110, 58, 106, 850, 182, 850, 106, 998, 182, 898, 226, 110, 178, 110, 206, 1258, 466, 1258, 418, 1334, 418, 1334, 490, 1334, 518, 1334, 566, 1310, 566, 1258, 494, 1282, 566, 1258, 566, 446, 806, 302, 950, 10, 950, 10, 250, 82, 250, 82, 206, 58, 206, 58, 134, 14, 134, 14, 206, 10, 206, 10, 58, 14, 58, 14, 106, 58, 58, 82, 58, 82, 14, 10, 14, 10, 10, 110, 10, 110, 250, 1214, 494, 1214, 466)
@@ -472,5 +474,35 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "quit
 "
+
+[node name="enemy_tank2" parent="." instance=ExtResource("11_4he14")]
+position = Vector2(1738, 1044)
+
+[node name="enemy_rusher" parent="." instance=ExtResource("12_nwyww")]
+position = Vector2(1424, 1026)
+
+[node name="enemy_rusher2" parent="." instance=ExtResource("12_nwyww")]
+position = Vector2(1071, 1047)
+
+[node name="enemy_ranger" parent="." instance=ExtResource("13_f6ub7")]
+position = Vector2(1506, 442)
+
+[node name="enemy_ranger2" parent="." instance=ExtResource("13_f6ub7")]
+position = Vector2(1171, 755)
+
+[node name="enemy_ranger3" parent="." instance=ExtResource("13_f6ub7")]
+position = Vector2(166, 1037)
+
+[node name="TroopSniper2" parent="." instance=ExtResource("9_26hm0")]
+position = Vector2(2140, 388)
+
+[node name="TroopSniper3" parent="." instance=ExtResource("9_26hm0")]
+position = Vector2(2016, 538)
+
+[node name="TroopTank3" parent="." instance=ExtResource("4_06ktj")]
+position = Vector2(1698, 139)
+
+[node name="TroopTank4" parent="." instance=ExtResource("4_06ktj")]
+position = Vector2(954, 801)
 
 [editable path="troop"]

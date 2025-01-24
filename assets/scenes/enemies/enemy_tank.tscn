@@ -10,7 +10,7 @@ radius = 40.0
 height = 112.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xhhkb"]
-radius = 84.0119
+radius = 103.019
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aleyb"]
 shader = ExtResource("3_hwj58")
@@ -54,14 +54,14 @@ _data = {
 "shoot": SubResource("Animation_bp7ac")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4w1x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe7xw"]
 bg_color = Color(0.0687983, 0.0687983, 0.0687982, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfmgm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ddh5"]
 bg_color = Color(0.50607, 0.662389, 0.233275, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -69,8 +69,8 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_4vniu"]
-ProgressBar/styles/background = SubResource("StyleBoxFlat_d4w1x")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_bfmgm")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_fe7xw")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_1ddh5")
 
 [node name="enemy_tank" instance=ExtResource("1_pgc4o")]
 script = ExtResource("2_lwg12")
@@ -85,13 +85,15 @@ visible = false
 
 [node name="HitboxComponent" parent="." index="3"]
 visible = false
-max_hp = 300.0
 
 [node name="CollisionShape2D" parent="HitboxComponent" index="0"]
 position = Vector2(19.5, -2)
 
 [node name="CollisionShape2D" parent="attack_range" index="0"]
 shape = SubResource("CircleShape2D_xhhkb")
+
+[node name="NavigationAgent2D" parent="." index="6"]
+target_desired_distance = 85.0
 
 [node name="chase_timer" type="Timer" parent="." index="8"]
 wait_time = 5.0

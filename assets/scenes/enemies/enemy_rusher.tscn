@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bune1a7rrsgdw"]
+[gd_scene load_steps=13 format=3 uid="uid://bune1a7rrsgdw"]
 
 [ext_resource type="PackedScene" uid="uid://csdohlnm1sk6r" path="res://assets/scenes/enemies/enemy_troop.tscn" id="1_moaud"]
 [ext_resource type="Script" path="res://assets/scripts/enemy_rusher.gd" id="2_27e2o"]
@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://assets/scenes/enemies/enemy.gdshader" id="3_isktx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ma3y"]
-radius = 163.077
+radius = 96.026
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aeqk6"]
 shader = ExtResource("3_isktx")
@@ -50,8 +50,27 @@ _data = {
 "shoot": SubResource("Animation_2w1n1")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4w1x"]
+bg_color = Color(0.0687983, 0.0687983, 0.0687982, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfmgm"]
+bg_color = Color(0.50607, 0.662389, 0.233275, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_5eldq"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_d4w1x")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_bfmgm")
+
 [node name="enemy_rusher" instance=ExtResource("1_moaud")]
 script = ExtResource("2_27e2o")
+speed = 160
 
 [node name="Label" parent="." index="0"]
 visible = false
@@ -63,6 +82,9 @@ position = Vector2(18, -1.5)
 [node name="Polygon2D" parent="." index="2"]
 visible = false
 
+[node name="HitboxComponent" parent="." index="3"]
+max_hp = 650.0
+
 [node name="CollisionShape2D" parent="HitboxComponent" index="0"]
 position = Vector2(20, -0.5)
 
@@ -70,7 +92,7 @@ position = Vector2(20, -0.5)
 shape = SubResource("CircleShape2D_8ma3y")
 
 [node name="NavigationAgent2D" parent="." index="6"]
-target_desired_distance = 25.0
+target_desired_distance = 85.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="8"]
 material = SubResource("ShaderMaterial_aeqk6")
@@ -83,3 +105,14 @@ hframes = 5
 libraries = {
 "": SubResource("AnimationLibrary_fksoo")
 }
+
+[node name="hp_bar" type="ProgressBar" parent="." index="10"]
+offset_left = -22.0
+offset_top = -56.0
+offset_right = 42.0
+offset_bottom = -44.0
+theme = SubResource("Theme_5eldq")
+max_value = 1000.0
+step = 1.0
+value = 500.0
+show_percentage = false
